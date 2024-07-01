@@ -1,0 +1,28 @@
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Header, LoadingScreen, SmoothScrolling } from "@/components";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = {
+  title: "HALLSYSTEM - budowa hal produkcyjnych, magazynowych oraz dla rolnictwa",
+  description: "Hallsystem w Starachowicach woj. świętokrzyskie zajmuje się budową hal produkcyjnych, magazynowych oraz rolniczych. Swoje usługi realizujemy na terenie całego kraju.",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="pl">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+      </head>
+      <body className={inter.className}>
+        <SmoothScrolling>
+          <LoadingScreen>
+            <Header />
+            {children}
+          </LoadingScreen>
+        </SmoothScrolling>
+      </body>
+    </html>
+  );
+}

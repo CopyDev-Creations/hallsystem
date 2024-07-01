@@ -1,0 +1,130 @@
+.header {
+    --bar-width: 40px;
+    --bar-height: 6px;
+    --hamburger-gap: 6px;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.header .logo {
+    width: 300px;
+    margin-left: 10px;
+
+    & img {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(var(--shadow));
+    }
+}
+
+.hamburgerMenu::before,
+.hamburgerMenu input,
+.hamburgerMenu::after {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--primary-color);
+    border-radius: 9999px;
+    transform-origin: right center;
+    transition: opacity var(--transition), width var(--transition), rotate var(--transition), translate var(--transition);
+}
+
+.hamburgerMenu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburgerMenu {
+    --bar-width: 40px;
+    --bar-height: 6px;
+    --hamburger-gap: 6px;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    width: max-content;
+    max-width: 40px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1002;
+    cursor: pointer;
+}
+
+.hamburgerMenu:has(input:checked)::before {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburgerMenu:has(input:checked)::after {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburgerMenu input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: 100dvh;
+    /* height: 100lvh; */
+    background-color: var(--secondary-color);
+    backdrop-filter: blur(10px);
+    transition: translate var(--transition);
+    translate: 100%;
+    padding: max(5%, 20px);
+    z-index: 1001;
+}
+
+/* Using JS instead  */
+/* .hamburgerMenu:has(input:checked)+.sidebar {
+    translate: 0%;
+} */
+
+.header .link {
+    font: var(--p);
+}
+
+.sidebar .link {
+    font: var(--h3);
+}
+
+@media (max-width: 850px) {
+    .header {
+        height: calc(var(--hamburger-height) + 40px);
+    }
+}

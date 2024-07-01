@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+:root {
+    --primary-color: #212021;
+    /* --secondary-color: #302a27; */
+    --secondary-color: #f5f0f6;
+    --tertiary-color: #c1c1c1;
+    --accent-color1: #0095ff;
+    --accent-color2: #2b4162;
+    --accent-color3: #ffc145;
+    --ff: "Work Sans";
+    /* --h1: 900 54px/64px var(--ff); */
+    --h1: 900 max(54px, 4vw) / max(64px, 5vw) var(--ff);
+    /* --h2: 800 36px/36px var(--ff); */
+    --h2: 800 max(36px, 3vw) / max(36px, 4vw) var(--ff);
+    /* --h3: 700 24px/30px var(--ff); */
+    --h3: 700 max(24px, 2vw) / max(30px, 3vw) var(--ff);
+    --h4: 700 max(22px, 1.25vw) / max(26px, 2vw) var(--ff);
+    --links: bold 18px/18px var(--ff);
+    --p: 18px/30px var(--ff);
+    --subtext: 12px/20px var(--ff);
+    --transition: 100ms ease-in-out;
+    --shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 0px;
+    --shadow-dark: rgba(0, 0, 0, 0.3) 0px 5px 10px 5px;
+    --scrollbar-bg: var(--tertiary-color);
+    --scrollbar-thumb: var(--primary-color);
+    --scrollbar-thumb-hover: hsl(300, 2%, 33%);
+    --background: var(--secondary-color);
+}
+
+/* SELECTION */
+/* Firefox */
+::-moz-selection {
+    color: var(--primary-color);
+    background: var(--accent-color3);
+}
+
+::selection {
+    color: var(--primary-color);
+    background: var(--accent-color3);
+}
+
+/* //////// */
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 9999px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* //////// */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    font-family: var(--ff);
+    background-color: var(--secondary-color);
+    background-image: url("/icons/grid.svg");
+    background-size: 32px;
+    background-repeat: repeat;
+    background-position: center;
+    background-blend-mode: overlay;
+    color: var(--primary-color);
+    /* transition: var(--transition); */
+    text-align: center;
+}
+
+h1 {
+    font: var(--h1);
+}
+
+h2 {
+    font: var(--h2);
+}
+
+h3 {
+    font: var(--h3);
+}
+
+h4 {
+    font: var(--h4);
+}
+
+p {
+    font: var(--p);
+}
+
+a {
+    font: var(--links);
+    text-decoration: none;
+    color: var(--primary-accent-color);
+}
+
+button {
+    font: var(--p);
+    color: var(--primary-color);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.prevent-select {
+    /* Safari */
+    -webkit-user-select: none;
+    /* IE 10 and IE 11 */
+    -ms-user-select: none;
+    /* Standard syntax */
+    user-select: none;
+}
+
+@media (min-width: 851px) {
+    .mobile-visible {
+        display: none !important;
+    }
+}
+
+@media (max-width: 850px) {
+    .desktop-visible {
+        display: none !important;
+    }
+}

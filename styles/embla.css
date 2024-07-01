@@ -1,0 +1,123 @@
+.embla {
+    --slide-height: 60lvh;
+    --slide-spacing: 1rem;
+    --slide-size: 100%;
+
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.embla__viewport {
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+}
+
+.embla__container {
+    display: flex;
+    margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+    flex: 0 0 var(--slide-size);
+    padding-left: var(--slide-spacing);
+    height: var(--slide-height);
+}
+
+.embla__slide>* {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.embla-thumbs {
+    --thumbs-slide-spacing: 20px;
+    --thumbs-slide-height: calc(20lvh - 20px);
+    margin-top: var(--thumbs-slide-spacing);
+}
+
+.embla-thumbs__viewport {
+    overflow: hidden;
+    cursor: grab;
+}
+
+.embla-thumbs__container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--thumbs-slide-spacing);
+    /* margin-left: calc(var(--thumbs-slide-spacing) * -1); */
+}
+
+.embla-thumbs__slide {
+    flex: 0 0 44%;
+    min-width: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: var(--thumbs-slide-height);
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+@media (min-width: 851px) {
+    .embla-thumbs__slide {
+        flex: 0 0 15%;
+    }
+}
+
+.embla-thumbs__slide>* {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.embla__buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.embla__button {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 75px;
+    height: 75px;
+    color: var(--primary-color);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0px 0px 3px var(--secondary-color));
+}
+
+.embla__button:hover .embla__button__svg {
+    scale: 1.1;
+}
+
+.embla__button__svg {
+    width: 100%;
+    height: 100%;
+    transition: all var(--transition);
+}
