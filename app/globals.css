@@ -7,10 +7,10 @@
     --tertiary-color: #c1c1c1;
     --accent-color1: #0095ff;
     --accent-color2: #2b4162;
-    --accent-color3: #ffc145;
+    --accent-color3: #ff724b;
     --ff: "Work Sans";
     /* --h1: 900 54px/64px var(--ff); */
-    --h1: 900 max(54px, 4vw) / max(64px, 5vw) var(--ff);
+    --h1: 900 max(54px, 4vw) / max(64px, 5vw) "Russo One";
     /* --h2: 800 36px/36px var(--ff); */
     --h2: 800 max(36px, 3vw) / max(36px, 4vw) var(--ff);
     /* --h3: 700 24px/30px var(--ff); */

@@ -6,25 +6,17 @@ import gsap from "gsap"
 
 const LoadingScreen = ({ children }) => {
     let { lenis } = useContext(LenisContext);
-    const [loading, setLoading] = useState(true);
-    const loadingScreen = useRef(null)
+    const [isLoading, setLoading] = useState(true);
+    const loadingScreen = useRef(null);
 
     useEffect(() => {
         if (loadingScreen.current) {
-            if (loading) {
-                loadingScreen.current.style.display = "";
-            } else {
-                if (!window.location.hash) {
-                    // lenis?.scrollTo(0);
-                }
-                loadingScreen.current.style.display = "none";
-            }
+            loadingScreen.current.style.display = isLoading ? "" : "none";
         }
-    }, [loading]);
+    }, [isLoading]);
 
     const startLoading = (_callback) => {
-        gsap.fromTo(loadingScreen.current, { clipPath: "polygon(150% 0%, 300% 0%, 250% 100%, 100% 100%)" }, { clipPath: "polygon(0% 0%, 150% 0%, 100% 100%, -50% 100%)", duration: 0.75 })
-        // setLoading(true);
+        gsap.fromTo(loadingScreen.current, { clipPath: "polygon(-100% 0%, -25% 0%, 0% 50%, -25% 100%, -100% 100%)" }, { clipPath: "polygon(0% 0%, 100% 0%, 125% 50%, 100% 100%, 0% 100%)", duration: 0.75 })
         setLoading(true);
         setTimeout(() => {
             _callback();
@@ -32,16 +24,21 @@ const LoadingScreen = ({ children }) => {
     }
 
     const stopLoading = () => {
-        gsap.fromTo(loadingScreen.current, { clipPath: "polygon(0% 0%, 150% 0%, 100% 100%, -50% 100%)" }, { clipPath: "polygon(-150% 0%, 0% 0%, -50% 100%, -200% 100%)", duration: 0.75 })
+        if (!window.location.hash) {
+            // lenis?.scrollTo(0);
+            document.documentElement.scrollTop = 0;
+        }
+        gsap.fromTo(loadingScreen.current, { clipPath: "polygon(-25% 0%, 100% 0%, 100% 100%, -25% 100%, 0% 50%)" }, { clipPath: "polygon(100% 0%, 200% 0%, 200% 100%, 100% 100%, 125% 50%)", duration: 0.75 })
         setTimeout(() => {
             setLoading(false);
         }, 750);
     }
 
     return (
-        <LoadingContext.Provider value={{ startLoading, stopLoading }}>
+        <LoadingContext.Provider value={{ startLoading, stopLoading, isLoading }}>
             <div className={styles.loading} ref={loadingScreen}>
-                <p>Loading</p>
+                {/* <p>Loading</p> */}
+                <img src="/images/logo.svg" alt="HALLSYSTEM" />
             </div>
             {children}
         </LoadingContext.Provider>

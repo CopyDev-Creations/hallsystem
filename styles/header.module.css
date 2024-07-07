@@ -12,6 +12,9 @@
     align-items: center;
     width: 100%;
     transition: var(--transition);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    background-color: rgba(245, 240, 246, 0.1);
 }
 
 .header nav {
@@ -26,11 +29,11 @@
 .header .logo {
     width: 300px;
     margin-left: 10px;
+    /* filter: drop-shadow(0px 0px 10px black); */
 
     & img {
         width: 100%;
         height: 100%;
-        filter: drop-shadow(var(--shadow));
     }
 }
 
@@ -100,14 +103,15 @@
     top: 0;
     right: 0;
     width: auto;
-    height: 100dvh;
-    /* height: 100lvh; */
+    height: 100lvh;
     background-color: var(--secondary-color);
     backdrop-filter: blur(10px);
     transition: translate var(--transition);
     translate: 100%;
     padding: max(5%, 20px);
+    padding-bottom: 10%;
     z-index: 1001;
+    box-shadow: var(--shadow);
 }
 
 /* Using JS instead  */
@@ -117,6 +121,7 @@
 
 .header .link {
     font: var(--p);
+    text-transform: uppercase;
 }
 
 .sidebar .link {

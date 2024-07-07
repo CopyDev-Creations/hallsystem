@@ -42,7 +42,6 @@ const StepsCarousel = (props) => {
         let fixedIndex = index;
         let fixedDelay = delay ?? autoplayDelay - 100;
 
-        console.log(index);
         if (index == 'next') {
             if (selectedIndex == 5) {
                 fixedIndex = selectedIndex;
@@ -90,8 +89,15 @@ const StepsCarousel = (props) => {
 
 
     useEffect(() => {
-        document.querySelector(`.${styles.viewport}`).addEventListener('mouseenter', handleMouseEnter);
-        document.querySelector(`.${styles.viewport}`).addEventListener('mouseleave', handleMouseLeave);
+        const viewport = document.querySelector(`.${styles.viewport}`);
+        viewport.addEventListener('mouseenter', handleMouseEnter);
+        viewport.addEventListener('mouseleave', handleMouseLeave);
+
+        const tooltip = document.querySelector(`.${styles.tooltip}`);
+
+        tooltip.style.left = `${selectedIndex / 5 * 100}%`;
+        tooltip.style.translate = `${(innerWidth || 0) < 1000 && selectedIndex <= 2 ? "0 15px" : "-100% 15px"}`;
+        tooltip.style.clipPath = `${(innerWidth || 0) < 1000 && selectedIndex <= 2 ? "polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px)" : "polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px))"}`;
 
         const thumbs = document.querySelectorAll(`.${styles.thumb}`);
 
@@ -109,8 +115,8 @@ const StepsCarousel = (props) => {
         if (emblaApi?.plugins()?.autoplay.isPlaying()) transitionToIndex('next');
 
         return () => {
-            document.querySelector(`.${styles.viewport}`).removeEventListener('mouseenter', handleMouseEnter);
-            document.querySelector(`.${styles.viewport}`).removeEventListener('mouseleave', handleMouseLeave);
+            viewport?.removeEventListener('mouseenter', handleMouseEnter);
+            viewport?.removeEventListener('mouseleave', handleMouseLeave);
         }
     }, [selectedIndex])
 
@@ -124,11 +130,11 @@ const StepsCarousel = (props) => {
         emblaApi.on('select', onSelect).on('reInit', onSelect)
     }, [emblaApi, onSelect])
 
+
     return (
         <div className={`embla ${styles.mainContainer}`}>
             <div className={styles.tooltipContainer}>
-                <div className={styles.tooltip} style={{ left: `${selectedIndex / 5 * 100}%` }}>
-                    {/* <div className={styles.tooltip}> */}
+                <div className={styles.tooltip}>
                     <span>
                         0{selectedIndex + 1}
                     </span>

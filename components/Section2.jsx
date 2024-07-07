@@ -33,7 +33,7 @@ const Section2 = () => {
     return (
         <section className={styles.section}>
             <h2>Etapy budowy hali</h2>
-            <div className={`${styles.mainContainer} desktop-visible`}>
+            <div className={`${styles.mainContainer}`}>
                 <StepsCarousel slides={SLIDES} />
                 {/* <div className={styles.image}></div>
                 <div className={styles.points}></div>

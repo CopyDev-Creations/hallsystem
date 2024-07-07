@@ -29,7 +29,7 @@ const Section1 = () => {
                 </div>
             </div>
             <div className={styles.spacer}></div>
-            <CustomButton href={"/"}><div className={styles.cta}><div><h4>Sprawdź naszą ofertę</h4></div></div></CustomButton>
+            <CustomButton href={"/oferta"}><div className={styles.cta}><div><h4>Sprawdź naszą ofertę</h4></div></div></CustomButton>
         </section>
     )
 }

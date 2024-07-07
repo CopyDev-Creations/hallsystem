@@ -1,0 +1,34 @@
+.background {
+    position: absolute;
+    width: 100%;
+    height: 75lvh;
+    background-image: url("/images/hero.jpg");
+    background-position: center;
+    background-size: cover;
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
+}
+
+.overlay {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 75lvh;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    text-wrap: nowrap;
+    width: 100%;
+    font: 400 8vw / 15lvh "Russo One";
+    height: calc(8vw + 40px);
+    text-transform: uppercase;
+    filter: drop-shadow(0px 0px 10px var(--primary-color));
+    color: var(--secondary-color);
+}

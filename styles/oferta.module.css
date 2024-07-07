@@ -1,0 +1,95 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 90lvh;
+    height: 100%;
+    margin-top: 10lvh;
+    /* background-image: linear-gradient(0deg, var(--accent-color2), var(--accent-color1)); */
+
+    & h1 {
+        color: var(--primary-color);
+        letter-spacing: 0.1em;
+        font-size: min(8vw, max(54px, 4vw));
+        line-height: min(8vw, max(64px, 5vw));
+        text-transform: uppercase;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+}
+
+.cardContainer {
+    flex: 0 0 350px;
+    height: 75lvh;
+    background-color: var(--accent-color2);
+    padding: 5px;
+    clip-path: polygon(0% 0%, calc(100% - 22.5px) 0%, 100% 22.5px, 100% 100%, 22.5px 100%, 0% calc(100% - 22.5px));
+
+    &>div {
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px));
+        overflow: hidden;
+    }
+}
+
+.card {
+    transition: ease-out 300ms;
+    clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px));
+
+    & .innerCard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* backdrop-filter: blur(3px); */
+        background-color: rgba(43, 65, 98, 0.75);
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.card:hover {
+    scale: 1.05;
+}
+
+.card h3 {
+    font: 700 40px / 40px var(--ff);
+}
+
+.cardContainer:nth-of-type(1) .card,
+.cardContainer:nth-of-type(2) .card,
+.cardContainer:nth-of-type(3) .card {
+    color: var(--secondary-color);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+
+.cardContainer:nth-of-type(1) .card {
+    background-image: url("/images/hala-magazynowa.jpg");
+}
+
+.cardContainer:nth-of-type(2) .card {
+    background-image: url("/images/hala-rolnicza.jpg");
+}
+
+.cardContainer:nth-of-type(3) .card {
+    background-image: url("/images/hala-produkcyjna.jpg");
+}
+
+@media (max-width: 850px) {
+    .section h1 {
+        letter-spacing: 0.05em;
+    }
+}

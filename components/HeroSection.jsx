@@ -5,7 +5,12 @@ const HeroSection = () => {
         <section className={styles.section}>
             <div className={styles.background}></div>
             <div className={styles.overlay}>
-                <h1 className={styles.title}><span>Hale</span> <span>Produkcyjne</span></h1>
+                <h1 className={styles.title}><span>Hale</span> <ul>
+                    <li>Produkcyjne</li>
+                    <li>Magazynowe</li>
+                    <li>Rolnicze</li>
+                    <li>Produkcyjne</li>
+                </ul></h1>
             </div>
             <div className={styles.stats}>
                 <div className={styles.stat}>

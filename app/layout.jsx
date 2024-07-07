@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header, LoadingScreen, SmoothScrolling } from "@/components";
+import { Footer, Header, LoadingScreen, SmoothScrolling } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
           <LoadingScreen>
             <Header />
             {children}
+            <Footer />
           </LoadingScreen>
         </SmoothScrolling>
       </body>

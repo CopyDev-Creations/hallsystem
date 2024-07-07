@@ -2,11 +2,13 @@
 import styles from "@/styles/header.module.css"
 import { useEffect, useRef } from "react"
 import { CustomButton } from ".";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
     const headerRef = useRef(null);
     const checkboxRef = useRef(null);
     const sidebarRef = useRef(null);
+    const pathname = usePathname();
 
     const handleCheckbox = (event) => {
         if (event.currentTarget.checked) {
@@ -24,10 +26,12 @@ const Header = () => {
     }
 
     const updateHeader = () => {
-        if (window.scrollY > 10) {
+        if (window.scrollY > 10 || pathname == "/oferta") {
             headerRef.current.style.background = "var(--secondary-color)";
+            headerRef.current.style.boxShadow = "var(--shadow)";
         } else {
             headerRef.current.style.background = "";
+            headerRef.current.style.boxShadow = "";
         }
     }
 
@@ -45,7 +49,7 @@ const Header = () => {
             document.removeEventListener('touchend', handleClick);
             document.removeEventListener('scroll', updateHeader);
         }
-    }, []);
+    }, [pathname]);
 
     return (
         <>
@@ -55,10 +59,10 @@ const Header = () => {
                 </CustomButton>
                 <nav className="desktop-visible">
                     <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
-                    <CustomButton href="/" className={styles.link}>O nas</CustomButton>
-                    <CustomButton href="/" className={styles.link}>Oferta</CustomButton>
-                    <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
-                    <CustomButton href="/" className={styles.link}>Kontakt</CustomButton>
+                    <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
+                    <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
+                    <CustomButton href="/" className={styles.link}>Twój projekt</CustomButton>
+                    <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
                 </nav>
             </header>
             <label className={`${styles.hamburgerMenu} prevent-select hamburgerMenu mobile-visible`}>
@@ -66,10 +70,10 @@ const Header = () => {
             </label>
             <aside className={`${styles.sidebar} mobile-visible`} ref={sidebarRef}>
                 <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
-                <CustomButton href="/" className={styles.link}>O nas</CustomButton>
-                <CustomButton href="/" className={styles.link}>Oferta</CustomButton>
-                <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
-                <CustomButton href="/" className={styles.link}>Kontakt</CustomButton>
+                <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
+                <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
+                <CustomButton href="/" className={styles.link}>Twój projekt</CustomButton>
+                <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
             </aside>
         </>
     )

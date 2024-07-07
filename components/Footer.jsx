@@ -6,7 +6,8 @@ const Footer = () => {
 
     return (
         <footer className={styles.footer}>
-            <p className={styles.copyright}>Copyright &copy; {d.getFullYear()} HALLSYSTEM Sp. J.</p>
+            <p className={styles.copyright}>Copyright &copy; {d.getFullYear()} <nobr>HALLSYSTEM Sp. J.</nobr></p>
+            <img src="/images/logo.svg" alt="HALLSYSTEM" className={styles.logo} />
             <a href="https://copydevcreations.com" target="_blank" className={styles.copydevcreations}><img src="/icons/copydevcreations.svg" alt="CopyDev Creations" title="Designed by CopyDev Creations" /></a>
         </footer>
     )

@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 const customButton = ({ href, animated, className, style, onClick, children }) => {
     const buttonRef = useRef(null);
     let { lenis } = useContext(LenisContext);
-    let { startLoading } = useContext(LoadingContext);
+    let { startLoading, isLoading } = useContext(LoadingContext);
     const router = useRouter();
     const pathname = usePathname();
 
@@ -29,10 +29,10 @@ const customButton = ({ href, animated, className, style, onClick, children }) =
 
     const handleButton = () => {
         if (onClick !== undefined) onClick();
-        if (href?.length == 0 || !href) return;
-        if (href[0] == '#' || href[0] == '.' || href == pathname || href == `${pathname}/#${href.split('#')[1]}`) {
+        if (href?.length == 0 || !href || isLoading) return;
+        if (href[0] == '#' || href[0] == '.' || href == pathname || href == `${pathname}/#${href.split('#')[1]}` || (href == `/#${href.split('#')[1]}` && pathname == "/")) {
             let elem;
-            if (href == `${pathname}/#${href.split('#')[1]}`) {
+            if (href == `${pathname}/#${href.split('#')[1]}` || (href == `/#${href.split('#')[1]}` && pathname == "/")) {
                 elem = document.querySelector(`#${href.split('#')[1]}`);
             } else {
                 elem = document.querySelector(href == "#" || href == pathname ? "body" : href);

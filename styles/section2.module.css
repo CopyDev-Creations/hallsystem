@@ -1,8 +1,8 @@
 .section {
-    margin-top: 10lvh;
+    margin-top: 25lvh;
 }
 
-.mainContainer:global(.desktop-visible) {
+.mainContainer {
     display: flex;
     justify-content: center;
     width: 100%;
