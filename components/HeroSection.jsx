@@ -5,12 +5,12 @@ const HeroSection = () => {
         <section className={styles.section}>
             <div className={styles.background} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/test.jpg")` }}></div>
             <div className={styles.overlay}>
-                <h1 className={styles.title}><span>Hale</span> <ul>
-                    <li>Produkcyjne</li>
-                    <li>Magazynowe</li>
-                    <li>Rolnicze</li>
-                    <li>Produkcyjne</li>
-                </ul></h1>
+                <h1 className={styles.title}><span>Hale</span> <div className={styles.list}>
+                    <span>Produkcyjne</span>
+                    <span>Magazynowe</span>
+                    <span>Rolnicze</span>
+                    <span>Produkcyjne</span>
+                </div></h1>
             </div>
             <div className={styles.stats}>
                 <div className={styles.stat}>
