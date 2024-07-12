@@ -118,6 +118,64 @@
     }
 }
 
+@property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+.number {
+    transition: --num 3s;
+    counter-set: num var(--num);
+    font: 800 40px system-ui;
+}
+
+.number::after {
+    content: counter(num);
+}
+
+.stats>.stat:nth-of-type(1) .number {
+    animation: counter1 3s forwards ease-in-out;
+}
+
+.stats>.stat:nth-of-type(2) .number {
+    animation: counter2 3s forwards ease-in-out;
+}
+
+.stats>.stat:nth-of-type(3) .number {
+    animation: counter3 3s forwards ease-in-out;
+}
+
+@keyframes counter1 {
+    from {
+        --num: 0
+    }
+
+    to {
+        --num: 149;
+    }
+}
+
+@keyframes counter2 {
+    from {
+        --num: 0
+    }
+
+    to {
+        --num: 65;
+    }
+}
+
+@keyframes counter3 {
+    from {
+        --num: 0
+    }
+
+    to {
+        --num: 101;
+    }
+}
+
 @keyframes scrollUp {
 
     0% {

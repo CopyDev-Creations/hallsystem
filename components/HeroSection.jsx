@@ -17,15 +17,15 @@ const HeroSection = () => {
             </div>
             <div className={styles.stats}>
                 <div className={styles.stat}>
-                    <span>149</span>
+                    <span className={styles.number}></span>
                     <span>Hal magazynowych</span>
                 </div>
                 <div className={styles.stat}>
-                    <span>65</span>
+                    <span className={styles.number}></span>
                     <span>Hal rolniczych</span>
                 </div>
                 <div className={styles.stat}>
-                    <span>101</span>
+                    <span className={styles.number}></span>
                     <span>Hal produkcyjnych</span>
                 </div>
             </div>
