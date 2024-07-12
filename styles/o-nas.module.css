@@ -6,7 +6,7 @@
 }
 
 .section2>h2 {
-    margin-top: 5lvh;
+    margin-top: 10lvh;
     margin-bottom: 20px;
 }
 
@@ -14,7 +14,7 @@
     position: absolute;
     width: 100%;
     height: 75lvh;
-    background-image: url("/images/hero.jpg");
+    /* background-image: url("/images/hero.jpg"); */
     background-position: center;
     background-size: cover;
     clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
@@ -100,12 +100,13 @@
 .person {
     width: 350px;
     height: auto;
-    background-color: var(--secondary-color);
+    /* background-color: var(--secondary-color); */
 
     &>img {
         width: 350px;
         height: 350px;
         object-fit: cover;
+        clip-path: polygon(0% 0%, calc(100% - 60px) 0%, 100% 60px, 100% 100%, 60px 100%, 0% calc(100% - 60px));
     }
 }
 
