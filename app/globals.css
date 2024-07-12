@@ -130,6 +130,36 @@ button {
     flex-direction: column;
 }
 
+img[data-loaded="false"] {
+    opacity: 0;
+}
+
+/* Image loading */
+*:has(>img[data-loaded="false"])::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    width: 300%;
+    background-color: var(--tertiary-color);
+    background-image: linear-gradient(315deg, transparent 33.33%, var(--secondary-color) 50%, transparent 66.66%);
+    background-repeat: no-repeat;
+    animation: imgLoading 2s linear infinite;
+}
+
+@keyframes imgLoading {
+    0% {
+        background-size: 50% 100%;
+        background-position: -200% 0%;
+    }
+
+    100% {
+        background-size: 200% 100%;
+        background-position: -100% 0%;
+    }
+}
+
 .prevent-select {
     /* Safari */
     -webkit-user-select: none;

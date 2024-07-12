@@ -29,9 +29,11 @@ const Header = () => {
         if (window.scrollY > 10 || pathname == "/oferta") {
             headerRef.current.style.background = "var(--secondary-color)";
             headerRef.current.style.boxShadow = "var(--shadow)";
+            headerRef.current.style.setProperty("--color", "var(--primary-color)");
         } else {
             headerRef.current.style.background = "";
             headerRef.current.style.boxShadow = "";
+            headerRef.current.style.setProperty("--color", "var(--secondary-color)");
         }
     }
 
@@ -61,7 +63,7 @@ const Header = () => {
                     <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                     <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                     <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
-                    <CustomButton href="/" className={styles.link}>Twój projekt</CustomButton>
+                    <CustomButton href="/#twoj-projekt" className={styles.link}>Twój projekt</CustomButton>
                     <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
                 </nav>
             </header>
@@ -72,7 +74,7 @@ const Header = () => {
                 <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                 <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                 <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
-                <CustomButton href="/" className={styles.link}>Twój projekt</CustomButton>
+                <CustomButton href="/#twoj-projekt" className={styles.link}>Twój projekt</CustomButton>
                 <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
             </aside>
         </>

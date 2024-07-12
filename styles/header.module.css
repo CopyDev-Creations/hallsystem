@@ -3,6 +3,7 @@
     --bar-height: 6px;
     --hamburger-gap: 6px;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+    --color: var(--primary-color);
 
     position: fixed;
     top: 0;
@@ -122,6 +123,7 @@
 .header .link {
     font: var(--p);
     text-transform: uppercase;
+    color: var(--color);
 }
 
 .sidebar .link {

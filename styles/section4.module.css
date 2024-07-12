@@ -1,0 +1,77 @@
+.section {
+    position: relative;
+    margin-top: 25lvh;
+    background-image: url("/images/IMG_20240704_112033700.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* height: 100lvh; */
+    color: var(--secondary-color);
+    clip-path: polygon(0% 100%, 100% 100%, 100% 60px, 66% 0%, 0% 120px);
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+    padding: 120px 0px 100px;
+    background-color: rgba(43, 65, 98, 0.75);
+    background-image: linear-gradient(transparent calc(100% - 50px), var(--accent-color2));
+    /* box-shadow: 0px 0px 50px 50px var(--accent-color2); */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 10lvh;
+    padding: 0px 20px;
+    gap: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    width: 250px;
+    background-color: var(--secondary-color);
+    padding: 5px;
+    clip-path: polygon(0% 0%, calc(100% - 22.5px) 0%, 100% 22.5px, 100% 100%, 22.5px 100%, 0% calc(100% - 22.5px));
+
+    &>div {
+        width: 100%;
+        height: 100%;
+        background-color: var(--accent-color2);
+        padding: 20px;
+        clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px));
+
+        /* &>p {
+            text-align: left;
+        } */
+    }
+
+    & svg {
+        fill: var(--secondary-color);
+        width: 25%;
+    }
+}
+
+.mapContainer {
+    width: 100%;
+    height: 50lvh;
+    padding: 5px;
+    background-color: var(--secondary-color);
+    clip-path: polygon(0% 0%, calc(100% - 22.5px) 0%, 100% 22.5px, 100% 100%, 22.5px 100%, 0% calc(100% - 22.5px));
+}
+
+.map {
+    border: none;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px));
+}
