@@ -1,7 +1,7 @@
 .section {
     position: relative;
     margin-top: 25lvh;
-    background-image: url("/images/IMG_20240704_112033700.jpg");
+    /* background-image: url("/images/IMG_20240704_112033700.jpg"); */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

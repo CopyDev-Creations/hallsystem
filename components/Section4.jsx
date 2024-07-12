@@ -2,7 +2,7 @@ import styles from "@/styles/section4.module.css";
 
 const Section4 = () => {
     return (
-        <section className={styles.section} id="kontakt">
+        <section className={styles.section} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/IMG_20240704_112033700.jpg")` }} id="kontakt">
             <div className={styles.overlay}>
                 <h2>Kontakt</h2>
                 <div className={styles.grid}>

@@ -3,7 +3,7 @@ import styles from "@/styles/hero.module.css";
 const HeroSection = () => {
     return (
         <section className={styles.section}>
-            <div className={styles.background}></div>
+            <div className={styles.background} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/test.jpg")` }}></div>
             <div className={styles.overlay}>
                 <h1 className={styles.title}><span>Hale</span> <ul>
                     <li>Produkcyjne</li>

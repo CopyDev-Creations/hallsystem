@@ -27,7 +27,7 @@
 .background {
     width: 100%;
     height: auto;
-    background-image: url("/images/hala-magazynowa4.jpg");
+    /* background-image: url("/images/hala-magazynowa4.jpg"); */
     background-attachment: fixed;
     background-size: cover;
     background-position: center;

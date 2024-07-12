@@ -17,7 +17,7 @@ const Oferta = () => {
                 <div className={styles.cards}>
                     <div className={styles.cardContainer}>
                         <div>
-                            <CustomButton className={styles.card} href={"/oferta/hale-magazynowe"}>
+                            <CustomButton className={styles.card} href={"/oferta/hale-magazynowe"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-magazynowa.jpg")` }}>
                                 <div className={styles.innerCard}>
                                     <h3>Hala<br />Magazynowa</h3>
                                 </div>
@@ -26,7 +26,7 @@ const Oferta = () => {
                     </div>
                     <div className={styles.cardContainer}>
                         <div>
-                            <CustomButton className={styles.card} href={"/oferta/hale-rolnicze"}>
+                            <CustomButton className={styles.card} href={"/oferta/hale-rolnicze"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-rolnicza.jpg")` }}>
                                 <div className={styles.innerCard}>
                                     <h3>Hala<br />Rolnicza</h3>
                                 </div>
@@ -35,7 +35,7 @@ const Oferta = () => {
                     </div>
                     <div className={styles.cardContainer}>
                         <div>
-                            <CustomButton className={styles.card} href={"/oferta/hale-produkcyjne"}>
+                            <CustomButton className={styles.card} href={"/oferta/hale-produkcyjne"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-produkcyjna.jpg")` }}>
                                 <div className={styles.innerCard}>
                                     <h3>Hala<br />Produkcyjna</h3>
                                 </div>

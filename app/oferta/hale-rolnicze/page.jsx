@@ -15,7 +15,7 @@ const HaleRolnicze = () => {
             <section className={styles.section}>
                 <h1>Hale Rolnicze</h1>
                 <p style={{ maxWidth: "700px" }}>Hallsystem realizuje hale dla rolnictwa przeznaczone do hodowli zwierząt, składowania produktów rolnych jak i do garażowania sprzętu rolniczego. Budowa konstrukcji stalowej niesie ze sobą wiele korzyści:</p>
-                <div className={styles.background} style={{ backgroundImage: 'url("/images/hala-rolnicza-bg.jpg")' }}>
+                <div className={styles.background} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-rolnicza-bg.jpg")` }}>
                     <div className={styles.overlay}>
                         <div className={styles.cards}>
                             <div className={styles.card}>

@@ -5,7 +5,7 @@
     height: 100lvh;
     /* background-color: #000; */
     background-color: var(--accent-color2);
-    background-image: url("/icons/grid.svg");
+    /* background-image: url("/icons/grid.svg"); */
     background-size: 32px;
     background-repeat: repeat;
     background-position: center;

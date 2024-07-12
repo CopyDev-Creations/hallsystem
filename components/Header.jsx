@@ -26,7 +26,7 @@ const Header = () => {
     }
 
     const updateHeader = () => {
-        if (window.scrollY > 10 || pathname == "/oferta") {
+        if (window.scrollY > 10 || pathname == "/oferta" || pathname == "/oferta/hale-magazynowe" || pathname == "/oferta/hale-rolnicze" || pathname == "/oferta/hale-produkcyjne") {
             headerRef.current.style.background = "var(--secondary-color)";
             headerRef.current.style.boxShadow = "var(--shadow)";
             headerRef.current.style.setProperty("--color", "var(--primary-color)");
@@ -57,7 +57,7 @@ const Header = () => {
         <>
             <header className={styles.header} ref={headerRef}>
                 <CustomButton href={"/"} animated={false} className={`${styles.logo} prevent-select`}>
-                    <img src="/images/logo.png" alt="HALLSYSTEM" />
+                    <img src={`${process.env.basePath || ""}/images/logo.png`} alt="HALLSYSTEM" />
                 </CustomButton>
                 <nav className="desktop-visible">
                     <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
