@@ -41,7 +41,7 @@ const O_nas = () => {
                 <h2>Nasz zespół</h2>
                 <div className={styles.zespol}>
                     <p>Przez lata zbudowaliśmy zespół zaufanych i doświadczonych pracowników, i rozwinęliśmy własne podejście do budowy hal, oparte na naszych dotychczasowych doświadczeniach. Dzięki temu wiemy z kim współpracować i wybieramy jedynie sprawdzonych przez nas dostawców, co pozwala nam zagwarantować najwyższa jakość materiałów.</p>
-                    <div className={styles.image}></div>
+                    <div className={styles.image} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hero.jpg")` }}></div>
                 </div>
 
                 <h2>Kierownictwo</h2>
