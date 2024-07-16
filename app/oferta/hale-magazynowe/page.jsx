@@ -2,6 +2,14 @@
 import styles from "@/styles/hale.module.css";
 import { LoadingContext, Slider } from "@/components";
 import { useContext, useEffect } from "react";
+import Image from "next/image";
+import hala1 from "@/public/images/hala-magazynowa1.jpg";
+import hala2 from "@/public/images/hala-magazynowa2.jpg";
+import hala3 from "@/public/images/hala-magazynowa3.jpg";
+import hala4 from "@/public/images/hala-magazynowa4.jpg";
+import hala5 from "@/public/images/hala-magazynowa5.jpg";
+import hala6 from "@/public/images/hala-magazynowa6.jpg";
+import hala7 from "@/public/images/hala-magazynowa7.jpg";
 
 const HaleMagazynowe = () => {
     let { stopLoading } = useContext(LoadingContext);
@@ -48,15 +56,7 @@ const HaleMagazynowe = () => {
                         </div>
                     </div>
                 </div>
-                <Slider images={[
-                    "/images/hala-magazynowa1.jpg",
-                    "/images/hala-magazynowa2.jpg",
-                    "/images/hala-magazynowa3.jpg",
-                    "/images/hala-magazynowa4.jpg",
-                    "/images/hala-magazynowa5.jpg",
-                    "/images/hala-magazynowa6.jpg",
-                    "/images/hala-magazynowa7.jpg",
-                ]} />
+                <Slider slideSize={"50%"} slideHeight={"600px"} slideStyle={{ filter: "contrast(1.2)" }} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7]} />
             </section>
         </main>
     )

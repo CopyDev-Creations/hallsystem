@@ -133,6 +133,18 @@ const StepsCarousel = (props) => {
 
     return (
         <div className={`embla ${styles.mainContainer}`}>
+            <div className={styles.viewport} ref={emblaMainRef}>
+                <div className={styles.container}>
+                    {slides.map((slide, index) => (
+                        <div className={styles.slide} key={index}>
+                            <div>
+                                {slide}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             <div className={styles.tooltipContainer}>
                 <div className={styles.tooltip}>
                     <span>
@@ -158,18 +170,6 @@ const StepsCarousel = (props) => {
                 </div>
                 <div className={styles.progressBarBG}></div>
                 <div className={styles.progressBar}></div>
-            </div>
-
-            <div className={styles.viewport} ref={emblaMainRef}>
-                <div className={styles.container}>
-                    {slides.map((slide, index) => (
-                        <div className={styles.slide} key={index}>
-                            <div>
-                                {slide}
-                            </div>
-                        </div>
-                    ))}
-                </div>
             </div>
         </div>
     )

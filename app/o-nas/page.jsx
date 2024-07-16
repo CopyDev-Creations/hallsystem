@@ -2,6 +2,22 @@
 import { LoadingContext, Slider } from "@/components";
 import styles from "@/styles/o-nas.module.css";
 import { useContext, useEffect } from "react";
+import logo1 from "@/public/logos/arcelor-mittal.svg";
+import logo2 from "@/public/logos/polimex-mostostal.svg";
+import logo3 from "@/public/logos/pruszynski.svg";
+import logo4 from "@/public/logos/ruukki.svg";
+import logo5 from "@/public/logos/skanska.svg";
+import logo6 from "@/public/logos/thyssenkrupp.svg";
+import logo7 from "@/public/logos/wisniowski.svg";
+import hala1 from "@/public/images/hala-produkcyjna4.jpg";
+import hala2 from "@/public/images/dastrans.jpg";
+import hala3 from "@/public/images/IMG_20240704_153232572.jpg";
+import hala4 from "@/public/images/hala-rolnicza5.jpg";
+import hala5 from "@/public/images/IMG_20240704_133948230.jpg";
+import hala6 from "@/public/images/IMG_20240704_123859614.jpg";
+import hala7 from "@/public/images/IMG_20240704_121409000.jpg";
+import hala8 from "@/public/images/hala-magazynowa6.jpg";
+import hala9 from "@/public/images/IMG_20240704_112043445.jpg";
 
 const O_nas = () => {
     let { stopLoading } = useContext(LoadingContext);
@@ -25,16 +41,13 @@ const O_nas = () => {
 
                 <p className={styles.introduction}>Hallsystem to polska firma z siedzibą w Starachowicach przy ul. Ostrowieckiej 5 działająca na rynku od ponad 15 lat. Specjalizujemy się w projektowaniu, produkcji i montażu konstrukcji stalowych na terenie całego kraju, obsługując sektory rolnictwa, przemysłu, handlu czy usług.</p>
 
-                <Slider slideSize={"20%"} slideSizeMobile={"50%"} slideHeight={"200px"} delay={2000} slideStyle={{ objectFit: "contain", padding: "20px" }}
-                    images={[
-                        "/logos/arcelor-mittal.svg",
-                        "/logos/polimex-mostostal.svg",
-                        "/logos/pruszynski.svg",
-                        "/logos/ruukki.svg",
-                        "/logos/skanska.svg",
-                        "/logos/thyssenkrupp.svg",
-                        "/logos/wisniowski.svg",
-                    ]}
+                <Slider
+                    slideSize={"20%"}
+                    slideSizeMobile={"50%"}
+                    slideHeight={"200px"}
+                    delay={2000}
+                    slideStyle={{ objectFit: "contain", padding: "20px" }}
+                    images={[logo1, logo2, logo3, logo4, logo5, logo6, logo7]}
                 />
             </section>
             <section className={styles.section2}>
@@ -65,17 +78,7 @@ const O_nas = () => {
             </section>
             <section className={styles.section2}>
                 <h2>Nasze realizacje</h2>
-                <Slider quality={1.5} images={[
-                    "/images/hala-produkcyjna4.jpg",
-                    "/images/dastrans.jpg",
-                    "/images/IMG_20240704_153232572.jpg",
-                    "/images/hala-rolnicza5.jpg",
-                    "/images/IMG_20240704_133948230.jpg",
-                    "/images/IMG_20240704_123859614.jpg",
-                    "/images/IMG_20240704_121409000.jpg",
-                    "/images/hala-magazynowa6.jpg",
-                    "/images/IMG_20240704_112043445.jpg",
-                ]} />
+                <Slider slideSize={"50%"} slideHeight={"600px"} slideStyle={{ filter: "contrast(1.2)" }} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} />
             </section>
         </main>
     )

@@ -30,10 +30,12 @@ const Header = () => {
             headerRef.current.style.background = "var(--secondary-color)";
             headerRef.current.style.boxShadow = "var(--shadow)";
             headerRef.current.style.setProperty("--color", "var(--primary-color)");
+            document.querySelector(`.${styles.logo}`).style.filter = "";
         } else {
             headerRef.current.style.background = "";
             headerRef.current.style.boxShadow = "";
             headerRef.current.style.setProperty("--color", "var(--secondary-color)");
+            document.querySelector(`.${styles.logo}`).style.filter = "drop-shadow(0px 0px 16px black)";
         }
     }
 
@@ -63,7 +65,8 @@ const Header = () => {
                     <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                     <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                     <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
-                    <CustomButton href="/#twoj-projekt" className={styles.link}>Twój projekt</CustomButton>
+                    <CustomButton href="/" className={styles.link}>Konfigurator</CustomButton>
+                    <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
                     <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
                 </nav>
             </header>
@@ -74,7 +77,8 @@ const Header = () => {
                 <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                 <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                 <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
-                <CustomButton href="/#twoj-projekt" className={styles.link}>Twój projekt</CustomButton>
+                <CustomButton href="/" className={styles.link}>Konfigurator</CustomButton>
+                <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
                 <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
             </aside>
         </>

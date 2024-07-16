@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
       </head>
-      <body className={inter.className} style={{ backgroundImage: `url("${process.env.basePath || ""}/icons/grid.svg")` }}>
+      <body className={inter.className} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/background.jpg")` }}>
         <SmoothScrolling>
           <LoadingScreen>
             <Header />

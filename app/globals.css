@@ -10,18 +10,19 @@
     --accent-color3: #ff724b;
     --ff: "Work Sans";
     /* --h1: 900 54px/64px var(--ff); */
-    --h1: 900 max(54px, 4vw) / max(64px, 5vw) "Russo One";
+    --h1: 600 max(54px, 4vw) / max(64px, 5vw) var(--ff);
     /* --h2: 800 36px/36px var(--ff); */
-    --h2: 800 max(36px, 3vw) / max(36px, 4vw) var(--ff);
+    --h2: 600 max(36px, 3vw) / max(36px, 4vw) var(--ff);
     /* --h3: 700 24px/30px var(--ff); */
-    --h3: 700 max(24px, 2vw) / max(30px, 3vw) var(--ff);
-    --h4: 700 max(22px, 1.25vw) / max(26px, 2vw) var(--ff);
+    --h3: 500 max(24px, 2vw) / max(30px, 3vw) var(--ff);
+    --h4: 500 max(22px, 1.25vw) / max(26px, 2vw) var(--ff);
     --links: bold 18px/18px var(--ff);
     --p: 18px/30px var(--ff);
     --subtext: 12px/20px var(--ff);
     --transition: 100ms ease-in-out;
     --shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 0px;
     --shadow-dark: rgba(0, 0, 0, 0.3) 0px 5px 10px 5px;
+    --drop-shadow: 2px 4px 6px var(--primary-color);
     --scrollbar-bg: var(--tertiary-color);
     --scrollbar-thumb: var(--primary-color);
     --scrollbar-thumb-hover: hsl(300, 2%, 33%);
@@ -80,10 +81,10 @@ body {
     font-family: var(--ff);
     background-color: var(--secondary-color);
     /* background-image: url("/icons/grid.svg"); */
-    background-size: 32px;
+    /* background-size: 32px; */
     background-repeat: repeat;
-    background-position: center;
-    background-blend-mode: overlay;
+    background-position: 52% 7%;
+    background-blend-mode: multiply;
     color: var(--primary-color);
     /* transition: var(--transition); */
     text-align: center;

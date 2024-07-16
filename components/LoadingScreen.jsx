@@ -36,7 +36,7 @@ const LoadingScreen = ({ children }) => {
 
     return (
         <LoadingContext.Provider value={{ startLoading, stopLoading, isLoading }}>
-            <div className={styles.loading} ref={loadingScreen} style={{ backgroundImage: `url("${process.env.basePath || ""}/icons/grid.svg")` }}>
+            <div className={styles.loading} ref={loadingScreen} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/background.jpg")` }}>
                 {/* <p>Loading</p> */}
                 <img src={`${process.env.basePath || ""}/images/logo.svg`} alt="HALLSYSTEM" />
             </div>

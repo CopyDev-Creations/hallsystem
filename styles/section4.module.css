@@ -19,6 +19,10 @@
     background-color: rgba(43, 65, 98, 0.75);
     background-image: linear-gradient(transparent calc(100% - 50px), var(--accent-color2));
     /* box-shadow: 0px 0px 50px 50px var(--accent-color2); */
+
+    &>* {
+        filter: drop-shadow(var(--drop-shadow));
+    }
 }
 
 .grid {

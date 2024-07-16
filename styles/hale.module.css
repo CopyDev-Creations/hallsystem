@@ -11,7 +11,7 @@
 
     & h1 {
         color: var(--primary-color);
-        letter-spacing: 0.1em;
+        /* letter-spacing: 0.1em; */
         font-size: min(8vw, max(54px, 4vw));
         line-height: min(8vw, max(64px, 5vw));
         text-transform: uppercase;
@@ -86,9 +86,9 @@
 
 @media (max-width: 850px) {
     .section {
-        & h1 {
+        /* & h1 {
             letter-spacing: 0.05em;
-        }
+        } */
 
         &>p {
             text-align: left;

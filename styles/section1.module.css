@@ -107,6 +107,7 @@
     font-weight: 700;
     clip-path: polygon(22.5px 0%, calc(100% - 22.5px) 0%, 100% 22.5px, 100% calc(100% - 22.5px), calc(100% - 22.5px) 100%, 22.5px 100%, 0% calc(100% - 22.5px), 0% 22.5px);
     color: var(--secondary-color);
+    text-transform: uppercase;
 
     &>div {
         /* background-color: var(--accent-color1); */

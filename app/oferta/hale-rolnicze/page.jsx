@@ -2,6 +2,15 @@
 import styles from "@/styles/hale.module.css";
 import { LoadingContext, Slider } from "@/components";
 import { useContext, useEffect } from "react";
+import hala1 from "@/public/images/hala-rolnicza1.jpg";
+import hala2 from "@/public/images/hala-rolnicza2.jpg";
+import hala3 from "@/public/images/hala-rolnicza3.jpg";
+import hala4 from "@/public/images/hala-rolnicza4.jpg";
+import hala5 from "@/public/images/hala-rolnicza5.jpg";
+import hala6 from "@/public/images/hala-rolnicza6.jpg";
+import hala7 from "@/public/images/hala-rolnicza7.jpg";
+import hala8 from "@/public/images/hala-rolnicza8.jpg";
+import hala9 from "@/public/images/hala-rolnicza9.jpg";
 
 const HaleRolnicze = () => {
     let { stopLoading } = useContext(LoadingContext);
@@ -48,17 +57,7 @@ const HaleRolnicze = () => {
                         </div>
                     </div>
                 </div>
-                <Slider images={[
-                    "/images/hala-rolnicza1.jpg",
-                    "/images/hala-rolnicza2.jpg",
-                    "/images/hala-rolnicza3.jpg",
-                    "/images/hala-rolnicza4.jpg",
-                    "/images/hala-rolnicza5.jpg",
-                    "/images/hala-rolnicza6.jpg",
-                    "/images/hala-rolnicza7.jpg",
-                    "/images/hala-rolnicza8.jpg",
-                    "/images/hala-rolnicza9.jpg",
-                ]} />
+                <Slider slideSize={"50%"} slideHeight={"600px"} slideStyle={{ filter: "contrast(1.2)" }} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} />
             </section>
         </main>
     )

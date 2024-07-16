@@ -6,10 +6,9 @@
     /* background-color: #000; */
     background-color: var(--accent-color2);
     /* background-image: url("/icons/grid.svg"); */
-    background-size: 32px;
     background-repeat: repeat;
-    background-position: center;
-    background-blend-mode: luminosity;
+    background-position: 52% 7%;
+    background-blend-mode: multiply;
     color: var(--primary-color);
     display: flex;
     flex-direction: column;

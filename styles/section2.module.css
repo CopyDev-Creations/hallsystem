@@ -6,32 +6,47 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-/* .mainContainer {
-    display: grid;
-    grid-template-columns: 1fr 100px 1fr;
-    grid-template-rows: repeat(6, 1fr);
-    row-gap: 20px;
-    margin-top: 20px;
-    background-color: rgba(255, 0, 0, 0.1);
-}
-
-.image {
-    grid-column: 1;
-    grid-row: 1/7;
-    max-width: 450px;
+.background {
+    position: absolute;
     width: 100%;
-    height: 100px;
-    background-image: url("/images/hero.jpg");
+    height: 100lvh;
+    /* background-image: url("/images/hero.jpg"); */
+    background-position: center;
+    background-size: cover;
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px)); */
+    clip-path: polygon(0% 60px, 33% 0%, 100% 120px, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
+
+    &>video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &>.colorOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 
-.points {
-    grid-column: 2;
-    grid-row: 1/7;
+.overlay {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100lvh;
+    padding: 120px 20px;
+    color: var(--secondary-color);
+    filter: drop-shadow(var(--drop-shadow));
 }
-
-.step {
-    text-align: left;
-    max-width: 400px;
-} */

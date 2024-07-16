@@ -10,8 +10,10 @@
     /* background-image: linear-gradient(0deg, var(--accent-color2), var(--accent-color1)); */
 
     & h1 {
-        color: var(--primary-color);
-        letter-spacing: 0.1em;
+        text-shadow: 0px 0px 10px var(--primary-color);
+        color: var(--secondary-color);
+        /* color: var(--primary-color); */
+        /* letter-spacing: 0.1em; */
         font-size: min(8vw, max(54px, 4vw));
         line-height: min(8vw, max(64px, 5vw));
         text-transform: uppercase;
@@ -65,7 +67,7 @@
 }
 
 .card h3 {
-    font: 700 40px / 40px var(--ff);
+    font: 500 40px / 40px var(--ff);
 }
 
 .cardContainer:nth-of-type(1) .card,
@@ -89,8 +91,8 @@
     background-image: url("/images/hala-produkcyjna.jpg");
 } */
 
-@media (max-width: 850px) {
+/* @media (max-width: 850px) {
     .section h1 {
         letter-spacing: 0.05em;
     }
-}
+} */
