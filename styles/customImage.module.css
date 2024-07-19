@@ -1,0 +1,28 @@
+.mainContainer {
+    --parallax-translate: 0% 0%;
+
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.image {
+    transition: scale var(--transition);
+    cursor: pointer;
+    object-fit: cover;
+    object-position: center;
+}
+
+.image[data-parallax="false"]:hover {
+    scale: 1.1;
+}
+
+.image[data-parallax="true"]:hover {
+    scale: 1.2;
+}
+
+.image[data-parallax="true"] {
+    scale: 1.1;
+    translate: var(--parallax-translate);
+}

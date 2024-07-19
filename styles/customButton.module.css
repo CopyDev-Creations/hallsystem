@@ -4,6 +4,7 @@
 
 .customButton,
 .customButtonStatic {
+    position: relative;
     text-decoration: none;
     background: transparent;
     border: none;

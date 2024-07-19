@@ -17,7 +17,7 @@
     /* background-image: url("/images/hero.jpg"); */
     background-position: center;
     background-size: cover;
-    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
 
     &>video {
         width: 100%;
@@ -85,7 +85,7 @@
         /* background-image: url("/images/hero.jpg"); */
         background-size: cover;
         background-position: center;
-        clip-path: polygon(0% 60px, 33% 0%, 100% 120px, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
+        clip-path: polygon(0% 60px, 33.33% 0%, 100% 120px, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
     }
 }
 

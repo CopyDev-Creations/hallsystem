@@ -1,10 +1,10 @@
 .section {
     /* background-color: var(--accent-color2); */
-    background-image: linear-gradient(335deg, var(--accent-color2), var(--accent-color1));
+    /* background-image: linear-gradient(335deg, var(--accent-color2), var(--accent-color1)); */
     background-attachment: fixed;
     /* box-shadow: var(--shadow-dark); */
     color: var(--secondary-color);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 33% calc(100% - 120px), 0% calc(100% - 60px));
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 33% calc(100% - 120px), 0% calc(100% - 60px)); */
     padding-bottom: 120px;
 }
 
@@ -16,7 +16,7 @@
     /* background-attachment: fixed; */
     background-position: 50% 0%;
     background-size: cover;
-    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
 }
 
 .overlay {
@@ -29,7 +29,7 @@
     padding-bottom: 120px;
     height: calc(100lvh + 120px);
     background-color: rgba(33, 32, 33, 0.5);
-    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66% 100%, 0% calc(100% - 120px));
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
 }
 
 .title {
@@ -85,8 +85,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100%;
-    min-height: 25lvh;
-    color: var(--secondary-color);
+    /* min-height: 25lvh; */
+    color: var(--accent-color2);
 }
 
 .stat {

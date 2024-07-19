@@ -1,13 +1,12 @@
 .section {
     position: relative;
-    margin-top: 25lvh;
     /* background-image: url("/images/IMG_20240704_112033700.jpg"); */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     /* height: 100lvh; */
     color: var(--secondary-color);
-    clip-path: polygon(0% 100%, 100% 100%, 100% 60px, 66% 0%, 0% 120px);
+    clip-path: polygon(0% 100%, 100% 100%, 100% 60px, 66.66% 0%, 0% 120px);
 }
 
 .overlay {

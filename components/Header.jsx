@@ -26,7 +26,7 @@ const Header = () => {
     }
 
     const updateHeader = () => {
-        if (window.scrollY > 10 || pathname == "/oferta" || pathname == "/oferta/hale-magazynowe" || pathname == "/oferta/hale-rolnicze" || pathname == "/oferta/hale-produkcyjne") {
+        if (window.scrollY > 10 || (pathname != "/" && pathname != "/o-nas")) {
             headerRef.current.style.background = "var(--secondary-color)";
             headerRef.current.style.boxShadow = "var(--shadow)";
             headerRef.current.style.setProperty("--color", "var(--primary-color)");
@@ -61,23 +61,23 @@ const Header = () => {
                 <CustomButton href={"/"} animated={false} className={`${styles.logo} prevent-select`}>
                     <img src={`${process.env.basePath || ""}/images/logo.png`} alt="HALLSYSTEM" />
                 </CustomButton>
-                <nav className="desktop-visible">
+                <nav className={styles.desktopVisible}>
                     <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                     <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                     <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
-                    <CustomButton href="/" className={styles.link}>Konfigurator</CustomButton>
+                    <CustomButton href="/konfigurator" className={styles.link}>Konfigurator</CustomButton>
                     <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
                     <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
                 </nav>
             </header>
-            <label className={`${styles.hamburgerMenu} prevent-select hamburgerMenu mobile-visible`}>
+            <label className={`${styles.hamburgerMenu} prevent-select hamburgerMenu ${styles.mobileVisible}`}>
                 <input type="checkbox" id="menu" className={styles.menu} ref={checkboxRef} />
             </label>
-            <aside className={`${styles.sidebar} mobile-visible`} ref={sidebarRef}>
+            <aside className={`${styles.sidebar} ${styles.mobileVisible}`} ref={sidebarRef}>
                 <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                 <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                 <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
-                <CustomButton href="/" className={styles.link}>Konfigurator</CustomButton>
+                <CustomButton href="/konfigurator" className={styles.link}>Konfigurator</CustomButton>
                 <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
                 <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
             </aside>

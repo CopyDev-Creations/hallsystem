@@ -1,5 +1,5 @@
 "use client"
-import styles from "@/styles/stepCarousel.module.css"
+import styles from "@/styles/stepsCarousel.module.css"
 import React, { useState, useEffect, useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'

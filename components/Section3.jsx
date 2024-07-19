@@ -9,11 +9,20 @@ import hala6 from "@/public/images/IMG_20240704_123859614.jpg";
 import hala7 from "@/public/images/IMG_20240704_121409000.jpg";
 import hala8 from "@/public/images/hala-magazynowa6.jpg";
 import hala9 from "@/public/images/IMG_20240704_112043445.jpg";
+import { CustomImage } from ".";
 
 const Section3 = () => {
+
+    const images = [hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9].map((image, index) => (
+        <CustomImage src={image} alt={`image-${index}`} key={index} fill parallax parallaxScale={30} />
+    ))
+
     return (
         <section className={styles.section}>
-            {/* <Slider slideSize={"50%"} slideHeight={"600px"} slideStyle={{ filter: "contrast(1.2)" }} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} /> */}
+            <div className={styles.gallery}>
+                {images}
+            </div>
+            {/* <Slider slideSize={"50%"} slideHeight={"600px"} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} /> */}
         </section>
         // <section className={styles.section} id="twoj-projekt">
         //     <h2>Twój projekt</h2>

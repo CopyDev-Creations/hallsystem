@@ -57,7 +57,7 @@ const HaleRolnicze = () => {
                         </div>
                     </div>
                 </div>
-                <Slider slideSize={"50%"} slideHeight={"600px"} slideStyle={{ filter: "contrast(1.2)" }} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} />
+                <Slider slideSize={"50%"} slideHeight={"600px"} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} />
             </section>
         </main>
     )

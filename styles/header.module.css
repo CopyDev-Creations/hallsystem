@@ -131,7 +131,26 @@
     font: var(--h3);
 }
 
-@media (max-width: 850px) {
+.link:hover::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    left: 0;
+}
+
+@media (min-width: 1101px) {
+    .mobileVisible {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .desktopVisible {
+        display: none !important;
+    }
+
     .header {
         height: calc(var(--hamburger-height) + 40px);
     }

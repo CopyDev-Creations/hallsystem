@@ -8,7 +8,7 @@ import { CustomButton } from "."
 
 const Slider = ({ images, slideSize, slideSizeMobile, slideHeight, delay, slideStyle, quality }) => {
     const autoplayDelay = delay || 3000;
-    const options = { containScroll: false, loop: true }
+    const options = { containScroll: false, loop: true, dragFree: true }
     const hoverAreaRef = useRef(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [interacting, setInteracting] = useState(false);
