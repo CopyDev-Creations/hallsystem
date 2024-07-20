@@ -172,8 +172,8 @@ const Konfigurator = () => {
                         <button className={styles.stepBtn} onClick={() => { setSelectedID(4) }}>4</button>
                         <button className={styles.stepBtn} onClick={() => { setSelectedID(5) }}>5</button>
                     </div>
-                    <div className={styles.viewport} data-lenis-prevent ref={viewRef}>
-                        <KonfiguratorCanvas szerokosc={formData.szerokosc} dlugosc={formData.dlugosc} wysokosc={formData.wysokosc} onLoad={() => stopLoading()} />
+                    <div className={`${styles.viewport} prevent-select`} data-lenis-prevent ref={viewRef}>
+                        <KonfiguratorCanvas szerokosc={formData.szerokosc} dlugosc={formData.dlugosc} wysokosc={formData.wysokosc} poszycie={formData.rodzaj != "Konstrukcja stalowa"} onLoad={() => stopLoading()} />
                     </div>
                 </div>
             </section>

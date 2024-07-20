@@ -20,8 +20,13 @@ const HaleMagazynowe = () => {
 
     return (
         <main>
+            <section className={styles.heroSection}>
+                <div className={styles.heroBackground} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hero_old.jpg")` }}></div>
+                <div className={styles.heroOverlay}>
+                    <h1>Hale Magazynowe</h1>
+                </div>
+            </section>
             <section className={styles.section}>
-                <h1>Hale Magazynowe</h1>
                 <p>W Hallsystem specjalizujemy się w projektowaniu, produkcji i montażu hal stalowych przeznaczonych do użytku magazynowego. Wybierając konstrukcje stalowe zamiast budynków murowanych, możesz liczyć na następujące korzyści:</p>
                 <div className={styles.background} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-magazynowa-bg.jpg")` }}>
                     <div className={styles.overlay}>

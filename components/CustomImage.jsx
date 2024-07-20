@@ -16,7 +16,7 @@ const CustomImage = ({ src, alt, width, height, fill, parallax, parallaxScale })
         if (parallax) document.addEventListener('scroll', updateParallax);
 
         return () => {
-            document.removeEventListener('scroll', updateParallax);
+            if (parallax) document.removeEventListener('scroll', updateParallax);
         }
     }, [])
 

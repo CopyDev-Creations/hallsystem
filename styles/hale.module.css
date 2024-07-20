@@ -1,12 +1,53 @@
+.heroSection {
+    /* background-color: var(--accent-color2); */
+    /* background-image: linear-gradient(335deg, var(--accent-color2), var(--accent-color1)); */
+    background-attachment: fixed;
+    /* box-shadow: var(--shadow-dark); */
+    color: var(--secondary-color);
+    margin-bottom: 10lvh;
+
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 33% calc(100% - 120px), 0% calc(100% - 60px)); */
+    & h1 {
+        font: 600 8vw / 15lvh var(--ff);
+        height: calc(8vw + 40px);
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        filter: drop-shadow(0px 0px 10px var(--primary-color));
+    }
+}
+
+.heroBackground {
+    position: absolute;
+    width: 100%;
+    height: calc(100lvh + 120px);
+    /* background-image: url("/images/test.jpg"); */
+    /* background-attachment: fixed; */
+    background-position: 50% 0%;
+    background-size: cover;
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
+}
+
+.heroOverlay {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 120px;
+    height: calc(100lvh + 120px);
+    background-color: rgba(33, 32, 33, 0.5);
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
+}
+
 .section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10lvh;
     width: 100%;
     min-height: 90lvh;
     height: 100%;
-    margin-top: 10lvh;
     /* background-image: linear-gradient(0deg, var(--accent-color2), var(--accent-color1)); */
 
     & h1 {

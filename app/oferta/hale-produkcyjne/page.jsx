@@ -20,8 +20,13 @@ const HaleProdukcyjne = () => {
 
     return (
         <main>
+            <section className={styles.heroSection}>
+                <div className={styles.heroBackground} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hero_old.jpg")` }}></div>
+                <div className={styles.heroOverlay}>
+                    <h1>Hale Produkcyjne</h1>
+                </div>
+            </section>
             <section className={styles.section}>
-                <h1>Hale Produkcyjne</h1>
                 <p style={{ maxWidth: "900px" }}>Hallsystem oferuje kompleksową budowę nowoczesnych hal stalowych dedykowanych różnorodnym zastosowaniom produkcyjnym. Wykorzystujemy naszą wiedzę i doświadczenie, dopasowując budynek do potrzeb inwestora. Wzniesienie hali produkcyjnej niesie ze sobą szereg korzyści względem tradycyjnego budynku murowanego.</p>
                 <div className={styles.background} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-produkcyjna-bg.jpg")` }}>
                     <div className={styles.overlay}>

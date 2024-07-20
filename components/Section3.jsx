@@ -14,6 +14,7 @@ import { CustomImage } from ".";
 const Section3 = () => {
 
     const images = [hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9].map((image, index) => (
+        // <CustomImage src={image} alt={`image-${index}`} key={index} fill />
         <CustomImage src={image} alt={`image-${index}`} key={index} fill parallax parallaxScale={30} />
     ))
 

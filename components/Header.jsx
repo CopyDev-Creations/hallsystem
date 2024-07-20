@@ -26,7 +26,7 @@ const Header = () => {
     }
 
     const updateHeader = () => {
-        if (window.scrollY > 10 || (pathname != "/" && pathname != "/o-nas")) {
+        if (window.scrollY > 10 || pathname == "/konfigurator" || pathname == "/oferta") {
             headerRef.current.style.background = "var(--secondary-color)";
             headerRef.current.style.boxShadow = "var(--shadow)";
             headerRef.current.style.setProperty("--color", "var(--primary-color)");
