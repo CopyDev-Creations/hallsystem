@@ -76,15 +76,15 @@ const Konfigurator = () => {
                             </div>
                             <div>
                                 <p>Szerokość: <span style={{ color: "var(--accent-color2)", fontWeight: 700 }}>{formData.szerokosc}m</span></p>
-                                <input type="range" id="szerokosc" name="szerokosc" min="4" max="40" step="0.5" value={formData.szerokosc} onChange={(e) => setFormData({ ...formData, szerokosc: e.target.value })} />
+                                <input type="range" id="szerokosc" name="szerokosc" className="prevent-select" min="4" max="40" step="0.5" value={formData.szerokosc} onChange={(e) => setFormData({ ...formData, szerokosc: e.target.value })} />
                             </div>
                             <div>
                                 <p>Długość: <span style={{ color: "var(--accent-color2)", fontWeight: 700 }}>{formData.dlugosc}m</span></p>
-                                <input type="range" id="dlugosc" name="dlugosc" min="6" max="120" step="6" value={formData.dlugosc} onChange={(e) => setFormData({ ...formData, dlugosc: e.target.value })} />
+                                <input type="range" id="dlugosc" name="dlugosc" className="prevent-select" min="6" max="120" step="6" value={formData.dlugosc} onChange={(e) => setFormData({ ...formData, dlugosc: e.target.value })} />
                             </div>
                             <div>
                                 <p>Wysokość: <span style={{ color: "var(--accent-color2)", fontWeight: 700 }}>{formData.wysokosc}m</span></p>
-                                <input type="range" id="wysokosc" name="wysokosc" min="2.5" max="6" step="0.5" value={formData.wysokosc} onChange={(e) => setFormData({ ...formData, wysokosc: e.target.value })} />
+                                <input type="range" id="wysokosc" name="wysokosc" className="prevent-select" min="2.5" max="6" step="0.5" value={formData.wysokosc} onChange={(e) => setFormData({ ...formData, wysokosc: e.target.value })} />
                             </div>
                         </div>
                         <div style={{ display: formData.rodzaj == "Konstrukcja stalowa" ? "none" : "" }}>
@@ -146,16 +146,20 @@ const Konfigurator = () => {
                                     <input type="email" name="email" id="email" placeholder="E-mail" required onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
                                 </div>
                                 <div>
-                                    <p>Numer telefonu:</p>
-                                    <input type="tel" name="telefon" id="telefon" placeholder="Telefon" required onChange={(e) => setFormData({ ...formData, telefon: e.target.value })} />
+                                    <p>Telefon:</p>
+                                    <input type="tel" name="telefon" id="telefon" placeholder="Numer telefonu" required onChange={(e) => setFormData({ ...formData, telefon: e.target.value })} />
                                 </div>
                                 <div>
                                     <p>Województwo:</p>
-                                    <input type="text" name="wojewodztwo" id="wojewodztwo" placeholder="Województwo" onChange={(e) => setFormData({ ...formData, wojewodztwo: e.target.value })} />
+                                    <input type="text" name="wojewodztwo" id="wojewodztwo" placeholder="Nazwa województwa" onChange={(e) => setFormData({ ...formData, wojewodztwo: e.target.value })} />
                                 </div>
                                 <div>
                                     <p>Miejscowość:</p>
-                                    <input type="text" name="miejscowosc" id="miejscowosc" placeholder="Miejscowość" onChange={(e) => setFormData({ ...formData, miejscowosc: e.target.value })} />
+                                    <input type="text" name="miejscowosc" id="miejscowosc" placeholder="Nazwa miejscowości" onChange={(e) => setFormData({ ...formData, miejscowosc: e.target.value })} />
+                                </div>
+                                <div>
+                                    <p>Komentarz:</p>
+                                    <textarea name="komentarz" id="komentarz" placeholder="Dodatkowe uwagi . . ." data-lenis-prevent onChange={(e) => setFormData({ ...formData, komentarz: e.target.value })} />
                                 </div>
                                 <button type="submit" onClick={handleSubmit}>Wyślij</button>
                             </form>
