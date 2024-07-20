@@ -64,7 +64,7 @@ const Header = () => {
                 <nav className={styles.desktopVisible}>
                     <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                     <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
-                    <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
+                    <CustomButton href="/#oferta" className={styles.link}>Oferta</CustomButton>
                     <CustomButton href="/konfigurator" className={styles.link}>Konfigurator</CustomButton>
                     <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
                     <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
@@ -76,7 +76,7 @@ const Header = () => {
             <aside className={`${styles.sidebar} ${styles.mobileVisible}`} ref={sidebarRef}>
                 <CustomButton href="/" className={styles.link}>Strona główna</CustomButton>
                 <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
-                <CustomButton href="/oferta" className={styles.link}>Oferta</CustomButton>
+                <CustomButton href="/#oferta" className={styles.link}>Oferta</CustomButton>
                 <CustomButton href="/konfigurator" className={styles.link}>Konfigurator</CustomButton>
                 <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
                 <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>

@@ -9,7 +9,7 @@ import hala6 from "@/public/images/IMG_20240704_123859614.jpg";
 import hala7 from "@/public/images/IMG_20240704_121409000.jpg";
 import hala8 from "@/public/images/hala-magazynowa6.jpg";
 import hala9 from "@/public/images/IMG_20240704_112043445.jpg";
-import { CustomImage } from ".";
+import { CustomButton, CustomImage } from ".";
 
 const Section3 = () => {
 
@@ -22,6 +22,9 @@ const Section3 = () => {
         <section className={styles.section}>
             <div className={styles.gallery}>
                 {images}
+                <div className={styles.ctaContainer}>
+                    <CustomButton href={"/realizacje"}><div className={styles.cta}><div><h4>Zobacz więcej</h4></div></div></CustomButton>
+                </div>
             </div>
             {/* <Slider slideSize={"50%"} slideHeight={"600px"} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} /> */}
         </section>

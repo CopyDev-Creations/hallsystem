@@ -167,10 +167,10 @@ const Konfigurator = () => {
                     </div>
                     <div className={styles.navigation} ref={navRef}>
                         <button className={`${styles.stepBtn} active`} onClick={() => { setSelectedID(1) }}>1</button>
-                        <button className={styles.stepBtn} onClick={() => { setSelectedID(2) }}>2</button>
-                        <button className={styles.stepBtn} onClick={() => { setSelectedID(3) }}>3</button>
-                        <button className={styles.stepBtn} onClick={() => { setSelectedID(4) }}>4</button>
-                        <button className={styles.stepBtn} onClick={() => { setSelectedID(5) }}>5</button>
+                        <button className={styles.stepBtn} style={{ display: formData.rodzaj == "Konstrukcja stalowa" ? "none" : "" }} onClick={() => { setSelectedID(2) }}>2</button>
+                        <button className={styles.stepBtn} onClick={() => { setSelectedID(formData.rodzaj == "Konstrukcja stalowa" ? 2 : 3) }}>{formData.rodzaj == "Konstrukcja stalowa" ? 2 : 3}</button>
+                        <button className={styles.stepBtn} style={{ display: formData.rodzaj == "Konstrukcja stalowa" ? "none" : "" }} onClick={() => { setSelectedID(4) }}>4</button>
+                        <button className={styles.stepBtn} onClick={() => { setSelectedID(formData.rodzaj == "Konstrukcja stalowa" ? 3 : 5) }}>{formData.rodzaj == "Konstrukcja stalowa" ? 3 : 5}</button>
                     </div>
                     <div className={`${styles.viewport} prevent-select`} data-lenis-prevent ref={viewRef}>
                         <KonfiguratorCanvas szerokosc={formData.szerokosc} dlugosc={formData.dlugosc} wysokosc={formData.wysokosc} poszycie={formData.rodzaj != "Konstrukcja stalowa"} onLoad={() => stopLoading()} />

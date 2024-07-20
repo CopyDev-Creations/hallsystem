@@ -23,7 +23,7 @@
     --shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 0px;
     --shadow-dark: rgba(0, 0, 0, 0.3) 0px 5px 10px 5px;
     --drop-shadow: 2px 4px 6px var(--primary-color);
-    --scrollbar-bg: var(--tertiary-color);
+    --scrollbar-bg: var(--secondary-color);
     --scrollbar-thumb: var(--primary-color);
     --scrollbar-thumb-hover: hsl(300, 2%, 33%);
     --background: var(--secondary-color);
