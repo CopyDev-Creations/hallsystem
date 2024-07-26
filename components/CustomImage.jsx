@@ -1,10 +1,12 @@
 "use client"
 import styles from "@/styles/customImage.module.css";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
+import { ImagePreviewContext } from ".";
 
-const CustomImage = ({ src, alt, width, height, fill, parallax, parallaxScale }) => {
-    const mainContainerRef = useRef(null)
+const CustomImage = ({ src, alt, width, height, fill, parallax, parallaxScale, className, style }) => {
+    const mainContainerRef = useRef(null);
+    let { setPreview } = useContext(ImagePreviewContext);
 
     const updateParallax = (event) => {
         const rect = mainContainerRef.current.getBoundingClientRect();
@@ -14,14 +16,13 @@ const CustomImage = ({ src, alt, width, height, fill, parallax, parallaxScale })
 
     useEffect(() => {
         if (parallax) document.addEventListener('scroll', updateParallax);
-
         return () => {
             if (parallax) document.removeEventListener('scroll', updateParallax);
         }
     }, [])
 
     return (
-        <div className={styles.mainContainer} ref={mainContainerRef}>
+        <div className={`${styles.mainContainer} ${className || ""}`} ref={mainContainerRef}>
             <Image
                 data-loaded='false'
                 data-parallax='false'
@@ -29,14 +30,16 @@ const CustomImage = ({ src, alt, width, height, fill, parallax, parallaxScale })
                     event.currentTarget.setAttribute('data-loaded', 'true');
                     if (parallax) event.currentTarget.setAttribute('data-parallax', 'true');
                 }}
+                onClick={() => setPreview(src)}
                 src={src}
                 alt={alt}
                 width={width}
                 height={height}
                 fill={fill}
                 className={styles.image}
+                style={{ ...style }}
             />
         </div>
     )
 }
-export default CustomImage
+export default memo(CustomImage)

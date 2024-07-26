@@ -4,15 +4,19 @@ import React, { useState, useEffect, useCallback, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from "next/image"
-import { CustomButton } from "."
+import { CustomButton, CustomImage } from "."
 
-const Slider = ({ images, slideSize, slideSizeMobile, slideHeight, delay, slideStyle, quality }) => {
+
+const Slider = ({ images, slideSize, slideSizeMobile, slideHeight, delay, slideStyle, quality, zoom, parallax, parallaxScale }) => {
     const autoplayDelay = delay || 3000;
+    const TWEEN_FACTOR_BASE = parallaxScale || 0.1;
     const options = { containScroll: false, loop: true, dragFree: true }
     const hoverAreaRef = useRef(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [interacting, setInteracting] = useState(false);
     const [hovering, setHovering] = useState(false);
+    const tweenFactor = useRef(0);
+    const tweenNodes = useRef([]);
     const [emblaMainRef, emblaApi] = useEmblaCarousel(options, [
         Autoplay({ playOnInit: true, delay: autoplayDelay, stopOnInteraction: false, stopOnMouseEnter: false })
     ])
@@ -67,6 +71,69 @@ const Slider = ({ images, slideSize, slideSizeMobile, slideHeight, delay, slideS
     }, [selectedIndex])
 
 
+    const setTweenNodes = useCallback((emblaApi) => {
+        tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
+            return slideNode.querySelector(`.${styles.embla__parallax__layer}`)
+        })
+    }, [])
+
+    const setTweenFactor = useCallback((emblaApi) => {
+        tweenFactor.current = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length
+    }, [])
+
+    const tweenParallax = useCallback((emblaApi, eventName) => {
+        const engine = emblaApi.internalEngine()
+        const scrollProgress = emblaApi.scrollProgress()
+        const slidesInView = emblaApi.slidesInView()
+        const isScrollEvent = eventName === 'scroll'
+
+        emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
+            let diffToTarget = scrollSnap - scrollProgress
+            const slidesInSnap = engine.slideRegistry[snapIndex]
+
+            slidesInSnap.forEach((slideIndex) => {
+                if (isScrollEvent && !slidesInView.includes(slideIndex)) return
+
+                if (engine.options.loop) {
+                    engine.slideLooper.loopPoints.forEach((loopItem) => {
+                        const target = loopItem.target()
+
+                        if (slideIndex === loopItem.index && target !== 0) {
+                            const sign = Math.sign(target)
+
+                            if (sign === -1) {
+                                diffToTarget = scrollSnap - (1 + scrollProgress)
+                            }
+                            if (sign === 1) {
+                                diffToTarget = scrollSnap + (1 - scrollProgress)
+                            }
+                        }
+                    })
+                }
+
+                const translate = diffToTarget * (-1 * tweenFactor.current) * 100
+                const tweenNode = tweenNodes.current[slideIndex]
+                tweenNode.style.transform = `translateX(${translate}%)`
+            })
+        })
+    }, [])
+
+    useEffect(() => {
+        if (!emblaApi || !parallax) return
+
+        setTweenNodes(emblaApi);
+        setTweenFactor(emblaApi);
+        tweenParallax(emblaApi);
+
+        emblaApi
+            .on('reInit', setTweenNodes)
+            .on('reInit', setTweenFactor)
+            .on('reInit', tweenParallax)
+            .on('scroll', tweenParallax)
+            .on('slideFocus', tweenParallax)
+    }, [emblaApi, tweenParallax])
+
+
     useEffect(() => {
         if (!emblaApi) return
         onSelect();
@@ -84,23 +151,41 @@ const Slider = ({ images, slideSize, slideSizeMobile, slideHeight, delay, slideS
                     <div className={styles.container}>
                         {images.map((image, index) => (
                             <div className={styles.slide} key={index}>
-                                <div>
-                                    <Image
-                                        data-loaded='false'
-                                        onLoad={event => {
-                                            event.currentTarget.setAttribute('data-loaded', 'true');
-                                        }}
-                                        src={image}
-                                        alt={`slide-${index}`}
-                                        width={(() => {
-                                            let viewportWidth = typeof innerWidth === 'undefined' ? 1600 : innerWidth;
-                                            if (!slideSize) return viewportWidth * 0.3333 * (quality || 1);
-                                            if (slideSize.includes('%')) return viewportWidth * parseFloat(slideSize.split('%')[0]) / 100 * (quality || 1);
-                                            return viewportWidth * parseFloat(slideSize) * (quality || 1);
-                                        })()}
-                                        height={(parseInt(slideHeight) || 300) * (quality || 1)}
-                                        style={{ ...slideStyle }} />
-                                    {/* <Image
+                                <div className={parallax ? styles.embla__parallax : ""}>
+                                    <div className={parallax ? styles.embla__parallax__layer : styles.embla__layer}>
+                                        {zoom ?
+                                            <CustomImage
+                                                src={image}
+                                                alt={`slide-${index}`}
+                                                width={(() => {
+                                                    let viewportWidth = typeof innerWidth === 'undefined' ? 1600 : innerWidth;
+                                                    if (!slideSize) return viewportWidth * 0.3333 * (quality || 1);
+                                                    if (slideSize.includes('%')) return viewportWidth * parseFloat(slideSize.split('%')[0]) / 100 * (quality || 1);
+                                                    return viewportWidth * parseFloat(slideSize) * (quality || 1);
+                                                })()}
+                                                height={(parseInt(slideHeight) || 300) * (quality || 1)}
+                                                style={{ ...slideStyle }}
+                                            />
+                                            :
+                                            <Image
+                                                data-loaded='false'
+                                                onLoad={event => {
+                                                    event.currentTarget.setAttribute('data-loaded', 'true');
+                                                }}
+                                                src={image}
+                                                alt={`slide-${index}`}
+                                                width={(() => {
+                                                    let viewportWidth = typeof innerWidth === 'undefined' ? 1600 : innerWidth;
+                                                    if (!slideSize) return viewportWidth * 0.3333 * (quality || 1);
+                                                    if (slideSize.includes('%')) return viewportWidth * parseFloat(slideSize.split('%')[0]) / 100 * (quality || 1);
+                                                    return viewportWidth * parseFloat(slideSize) * (quality || 1);
+                                                })()}
+                                                height={(parseInt(slideHeight) || 300) * (quality || 1)}
+                                                style={{ ...slideStyle }}
+                                            />
+                                        }
+
+                                        {/* <Image
                                     data-loaded='false'
                                     onLoad={event => {
                                         event.currentTarget.setAttribute('data-loaded', 'true');
@@ -115,6 +200,7 @@ const Slider = ({ images, slideSize, slideSizeMobile, slideHeight, delay, slideS
                                     })()}
                                     height={(parseInt(slideHeight) || 300) * (quality || 1)}
                                     style={{ ...slideStyle }} /> */}
+                                    </div>
                                 </div>
                             </div>
                         ))}

@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Footer, Header, LoadingScreen, SmoothScrolling } from "@/components";
+import { Footer, Header, ImagePreview, LoadingScreen, SmoothScrolling } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +18,11 @@ export default function RootLayout({ children }) {
       <body className={inter.className} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/background.jpg")` }}>
         <SmoothScrolling>
           <LoadingScreen>
-            <Header />
-            {children}
-            <Footer />
+            <ImagePreview>
+              <Header />
+              {children}
+              <Footer />
+            </ImagePreview>
           </LoadingScreen>
         </SmoothScrolling>
       </body>

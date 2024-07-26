@@ -171,7 +171,7 @@ img[data-loaded="false"] {
 }
 
 /* Image loading */
-*:has(>img[data-loaded="false"])::before {
+*:has(>img[data-loaded="false"]:not([data-loader="visibility"])):before {
     content: '';
     position: absolute;
     top: 0;
@@ -182,6 +182,14 @@ img[data-loaded="false"] {
     background-image: linear-gradient(315deg, transparent 33.33%, var(--secondary-color) 50%, transparent 66.66%);
     background-repeat: no-repeat;
     animation: imgLoading 2s linear infinite;
+}
+
+img[data-loader="visibility"] {
+    transition: opacity var(--transition);
+}
+
+img[data-loaded="false"][data-loader="visibility"] {
+    opacity: 0;
 }
 
 @keyframes imgLoading {

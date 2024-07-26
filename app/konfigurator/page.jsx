@@ -130,7 +130,16 @@ const Konfigurator = () => {
                             </div>
                             <div>
                                 <div style={{ position: 'relative', height: '300px' }}>
-                                    <Image src={mapa} alt="Mapa stref" fill style={{ objectFit: 'contain' }} />
+                                    <Image
+                                        data-loaded='false'
+                                        onLoad={event => {
+                                            event.currentTarget.setAttribute('data-loaded', 'true');
+                                        }}
+                                        src={mapa}
+                                        alt="Mapa stref"
+                                        fill
+                                        style={{ objectFit: 'contain' }}
+                                    />
                                 </div>
                             </div>
                             <div>

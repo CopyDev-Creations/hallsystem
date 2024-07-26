@@ -1,5 +1,4 @@
 import styles from "@/styles/section3.module.css";
-import Slider from "./Slider";
 import hala1 from "@/public/images/hala-produkcyjna4.jpg";
 import hala2 from "@/public/images/dastrans.jpg";
 import hala3 from "@/public/images/IMG_20240704_153232572.jpg";
@@ -14,24 +13,39 @@ import { CustomButton, CustomImage } from ".";
 const Section3 = () => {
 
     const images = [hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9].map((image, index) => (
-        // <CustomImage src={image} alt={`image-${index}`} key={index} fill />
         <CustomImage src={image} alt={`image-${index}`} key={index} fill parallax parallaxScale={30} />
     ))
 
     return (
-        <section className={styles.section}>
-            <div className={styles.gallery}>
-                {images}
-                <div className={styles.ctaContainer}>
-                    <CustomButton href={"/realizacje"}><div className={styles.cta}><div><h4>Zobacz więcej</h4></div></div></CustomButton>
+        <>
+            <section className={styles.section1}>
+                <div className={styles.gallery}>
+                    {images}
+                    <div className={styles.ctaContainer}>
+                        <div>
+                            <CustomButton href={"/galeria"}><div className={styles.cta}><div><h4>Zobacz więcej</h4></div></div></CustomButton>
+                        </div>
+                        <CustomImage src={hala3} alt="background" fill parallax parallaxScale={30} className={styles.image} />
+                    </div>
                 </div>
-            </div>
-            {/* <Slider slideSize={"50%"} slideHeight={"600px"} images={[hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9]} /> */}
-        </section>
-        // <section className={styles.section} id="twoj-projekt">
-        //     <h2>Twój projekt</h2>
-        //     <p>W Hallsystem jesteśmy otwarci na propozycje naszych klientów. Jeżeli masz pomysł na projekt, który odbiega od standardów, chętnie podejmiemy wyzwanie i przekształcimy twoją wizję w solidną, funkcjonalną i estetyczną konstrukcję stalową.</p>
-        // </section>
+            </section>
+            <section className={styles.section2}>
+                <div className={styles.text}>
+                    <h2>Stwórz własną halę</h2>
+                    <p>Skorzystaj z naszego konfiguratora i przyspiesz proces wstępnej wyceny swojej inwestycji. Obsługa narzędzia jest prosta: wystarczy, że wybierzesz odpowiednie opcje, postępując zgodnie z krokami wskazanymi przez system. Dzięki temu szybko dopasujesz projekt do swoich potrzeb i ułatwisz nam określenie kosztów inwestycji.</p>
+                    <CustomButton href={"/konfigurator"}><div className={styles.cta}><div><h4>Zacznij teraz</h4></div></div></CustomButton>
+                </div>
+                <div className={styles.videoContainer}>
+                    <div>
+                        <CustomButton href={"/konfigurator"} animated={false}>
+                            <video autoPlay muted loop playsInline>
+                                <source src={`${process.env.basePath || ""}/videos/konfigurator.mp4`} type="video/mp4" />
+                            </video>
+                        </CustomButton>
+                    </div>
+                </div>
+            </section>
+        </>
     )
 }
 export default Section3

@@ -140,6 +140,35 @@
     left: 0;
 }
 
+.hint {
+    position: fixed;
+    top: calc(100vh - 100px);
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    color: var(--secondary-color);
+    fill: transparent;
+    rotate: 90deg;
+    transition: opacity var(--transition);
+    z-index: 100;
+    animation: hintAnimation cubic-bezier(0, 0.93, 0.44, 1.41) 2s infinite;
+    opacity: 0.5;
+}
+
+@keyframes hintAnimation {
+    0% {
+        translate: 0px 0px;
+    }
+
+    25% {
+        translate: 0px 10px;
+    }
+
+    50% {
+        translate: 0px 0px;
+    }
+}
+
 @media (min-width: 1101px) {
     .mobileVisible {
         display: none !important;

@@ -8,10 +8,13 @@
     gap: 20px;
     padding: 20px;
     /* mask-image: linear-gradient(white 50%, transparent); */
-    translate: 0% -360px;
 
     &>* {
         clip-path: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0% calc(100% - 20px));
+    }
+
+    &>.ctaContainer:last-child {
+        grid-row: span 1;
     }
 
     /* &>*:nth-child(6n + 1) {
@@ -32,11 +35,24 @@
 }
 
 .ctaContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     width: 100%;
-    height: 50%;
+    height: 100%;
+
+    & .image {
+        filter: blur(5px);
+        z-index: -1;
+    }
+
+    &>div:first-child {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 .cta {
@@ -53,6 +69,53 @@
         background-color: var(--accent-color2);
         padding: 20px;
         clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0% calc(100% - 20px), 0% 20px);
+    }
+}
+
+.section2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20px;
+    width: 100%;
+    gap: 20px;
+    margin-top: 10lvh;
+    margin-bottom: 10lvh;
+
+    &>.text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: left;
+        max-width: 700px;
+        align-self: center;
+        justify-self: center;
+
+        & h2 {
+            text-align: center;
+        }
+    }
+}
+
+.videoContainer {
+    object-fit: contain;
+    height: fit-content;
+    align-self: center;
+    width: 100%;
+    max-width: 1000px;
+    font-size: 0;
+    padding: 5px;
+    background-color: var(--accent-color2);
+    clip-path: polygon(0% 0%, calc(100% - 42.5px) 0%, 100% 42.5px, 100% 100%, 42.5px 100%, 0% calc(100% - 42.5px));
+
+    &>div {
+        clip-path: polygon(0% 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, 40px 100%, 0% calc(100% - 40px));
+
+        & video {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
     }
 }
 
@@ -79,6 +142,16 @@
 
         &>*:last-child {
             grid-column: span 3;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .section2 {
+        grid-template-columns: 1fr;
+
+        &>div {
+            gap: 10px;
         }
     }
 }

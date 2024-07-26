@@ -35,7 +35,7 @@ const Section2 = () => {
             <div className={styles.background}>
                 <div className={styles.colorOverlay}></div>
                 <video autoPlay muted loop playsInline>
-                    <source src={`${process.env.basePath || ""}/videos/o-nas-bg.mp4`} type="video/mp4" />
+                    <source src={`${process.env.basePath || ""}/videos/produkcja-bg.mp4`} type="video/mp4" />
                 </video>
             </div>
             <div className={styles.overlay}>

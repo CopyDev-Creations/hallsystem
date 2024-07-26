@@ -37,7 +37,7 @@ const Section1 = () => {
                 <div className={styles.cards} id="oferta">
                     <div className={styles.cardContainer}>
                         <div>
-                            <CustomButton className={styles.card} href={"/oferta/hale-magazynowe"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-magazynowa.jpg")` }}>
+                            <CustomButton className={styles.card} href={"/hale-magazynowe"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-magazynowa.jpg")` }}>
                                 <div className={styles.innerCard}>
                                     <h3>Hala<br />Magazynowa</h3>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" fill="currentFill" /><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="8" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="16" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
@@ -47,7 +47,7 @@ const Section1 = () => {
                     </div>
                     <div className={styles.cardContainer}>
                         <div>
-                            <CustomButton className={styles.card} href={"/oferta/hale-rolnicze"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-rolnicza.jpg")` }}>
+                            <CustomButton className={styles.card} href={"/hale-rolnicze"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-rolnicza.jpg")` }}>
                                 <div className={styles.innerCard}>
                                     <h3>Hala<br />Rolnicza</h3>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" fill="currentFill" /><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="8" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="16" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
@@ -57,7 +57,7 @@ const Section1 = () => {
                     </div>
                     <div className={styles.cardContainer}>
                         <div>
-                            <CustomButton className={styles.card} href={"/oferta/hale-produkcyjne"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-produkcyjna.jpg")` }}>
+                            <CustomButton className={styles.card} href={"/hale-produkcyjne"} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/hala-produkcyjna.jpg")` }}>
                                 <div className={styles.innerCard}>
                                     <h3>Hala<br />Produkcyjna</h3>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" fill="currentFill" /><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="8" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="16" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>

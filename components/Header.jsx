@@ -26,16 +26,18 @@ const Header = () => {
     }
 
     const updateHeader = () => {
-        if (window.scrollY > 10 || pathname == "/konfigurator" || pathname == "/oferta") {
+        if (window.scrollY > 10 || pathname == "/konfigurator" || pathname == "/galeria") {
             headerRef.current.style.background = "var(--secondary-color)";
             headerRef.current.style.boxShadow = "var(--shadow)";
             headerRef.current.style.setProperty("--color", "var(--primary-color)");
             document.querySelector(`.${styles.logo}`).style.filter = "";
+            document.querySelector(`.${styles.hint}`).style.opacity = "0";
         } else {
             headerRef.current.style.background = "";
             headerRef.current.style.boxShadow = "";
             headerRef.current.style.setProperty("--color", "var(--secondary-color)");
             document.querySelector(`.${styles.logo}`).style.filter = "drop-shadow(0px 0px 16px black)";
+            if (pathname != "/o-nas") document.querySelector(`.${styles.hint}`).style.opacity = "0.5";
         }
     }
 
@@ -66,7 +68,7 @@ const Header = () => {
                     <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                     <CustomButton href="/#oferta" className={styles.link}>Oferta</CustomButton>
                     <CustomButton href="/konfigurator" className={styles.link}>Konfigurator</CustomButton>
-                    <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
+                    <CustomButton href="/galeria" className={styles.link}>Galeria</CustomButton>
                     <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
                 </nav>
             </header>
@@ -78,9 +80,12 @@ const Header = () => {
                 <CustomButton href="/o-nas" className={styles.link}>O nas</CustomButton>
                 <CustomButton href="/#oferta" className={styles.link}>Oferta</CustomButton>
                 <CustomButton href="/konfigurator" className={styles.link}>Konfigurator</CustomButton>
-                <CustomButton href="/" className={styles.link}>Realizacje</CustomButton>
+                <CustomButton href="/galeria" className={styles.link}>Galeria</CustomButton>
                 <CustomButton href="/#kontakt" className={styles.link}>Kontakt</CustomButton>
             </aside>
+            <div className={styles.hint}>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="8" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><line x1="12" y1="16" x2="16" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+            </div>
         </>
     )
 }

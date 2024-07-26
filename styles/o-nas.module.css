@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.section2 {
+    margin-top: 10lvh;
+}
+
 .section2>h2 {
     margin-top: 10lvh;
     margin-bottom: 20px;
@@ -66,47 +70,86 @@
     max-width: 950px;
 }
 
-.zespol {
+.bulletPointsContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    margin-top: 20px;
+
+    & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(0% 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, 40px 100%, 0% calc(100% - 40px));
+    }
+}
+
+.bulletPoints {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0px 20px;
+    gap: 20px;
+    translate: -50px 0px;
+}
+
+.bulletPoint {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    align-items: center;
+    text-align: left;
+}
+
+.iconContainer {
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent-color2);
+    padding: 5px;
+    clip-path: polygon(0% 0%, calc(100% - 22.5px) 0%, 100% 22.5px, 100% 100%, 22.5px 100%, 0% calc(100% - 22.5px));
+
+    &>div {
+        width: 100%;
+        height: 100%;
+        background-color: var(--secondary-color);
+        clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px));
+    }
+
+    & svg {
+        color: var(--accent-color2);
+    }
+}
+
+.doswiadczenie {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 20px;
     width: 100%;
     gap: 20px;
 
-    &>p {
+    &>.doswiadczenieText {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         text-align: left;
         max-width: 700px;
-        margin: auto auto;
+        align-self: center;
+        justify-self: center;
+
+        & h2 {
+            text-align: center;
+        }
     }
 
     &>.image {
         width: 100%;
-        height: 400px;
-        /* background-image: url("/images/hero.jpg"); */
-        background-size: cover;
-        background-position: center;
-        clip-path: polygon(0% 60px, 33.33% 0%, 100% 120px, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
-    }
-}
-
-.kierownictwo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.person {
-    width: 350px;
-    height: auto;
-    /* background-color: var(--secondary-color); */
-
-    &>img {
-        width: 350px;
-        height: 350px;
+        max-width: 1000px;
+        height: 700px;
         object-fit: cover;
-        clip-path: polygon(0% 0%, calc(100% - 60px) 0%, 100% 60px, 100% 100%, 60px 100%, 0% calc(100% - 60px));
+        object-position: center;
+        align-self: center;
+        justify-self: center;
+        clip-path: polygon(0% 60px, 33.33% 0%, 100% 120px, 100% calc(100% - 60px), 66.66% 100%, 0% calc(100% - 120px));
     }
 }
 
@@ -115,7 +158,42 @@
         text-align: left;
     }
 
-    .zespol {
+    .doswiadczenie {
         grid-template-columns: 1fr;
+
+        &>div {
+            gap: 10px;
+        }
+    }
+
+    .bulletPointsContainer {
+        grid-template-columns: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        & img {
+            position: absolute;
+        }
+    }
+
+    .iconContainer {
+        width: 75px;
+        height: 75px;
+        align-self: flex-start;
+        background-color: var(--secondary-color);
+    }
+
+    .bulletPoint {
+        grid-template-columns: 75px 1fr;
+        filter: drop-shadow(var(--drop-shadow));
+    }
+
+    .bulletPoints {
+        translate: 0px 0px;
+        background-color: rgba(43, 65, 98, 0.75);
+        padding: 20px;
+        gap: 40px;
+        color: var(--secondary-color);
+        clip-path: polygon(0% 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, 40px 100%, 0% calc(100% - 40px));
     }
 }

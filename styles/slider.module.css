@@ -66,21 +66,40 @@
         width: 100%;
         height: 100%;
         background-color: var(--secondary-color);
-        background-size: cover;
-        background-position: center;
         clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 20px 100%, 0% calc(100% - 20px));
+    }
 
-        &>img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
     &:last-child {
         margin-right: var(--slide-spacing);
     }
+}
+
+.embla__parallax {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.embla__layer {
+    width: 100%;
+    height: 100%;
+}
+
+.embla__parallax__layer {
+    position: absolute;
+    height: 100%;
+    width: calc(115% + (var(--slide-spacing) * 2));
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 850px) {
