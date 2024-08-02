@@ -153,19 +153,20 @@
     z-index: 100;
     animation: hintAnimation cubic-bezier(0, 0.93, 0.44, 1.41) 2s infinite;
     opacity: 0.5;
+    translate: -50% 0px;
 }
 
 @keyframes hintAnimation {
     0% {
-        translate: 0px 0px;
+        translate: -50% 0px;
     }
 
     25% {
-        translate: 0px 10px;
+        translate: -50% 10px;
     }
 
     50% {
-        translate: 0px 0px;
+        translate: -50% 0px;
     }
 }
 

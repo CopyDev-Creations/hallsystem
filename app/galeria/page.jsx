@@ -76,7 +76,7 @@ const Galeria = () => {
 
     const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20, image21, image22, image23, image24, image25, image26, image27, image28, image29, image30, image31, image32, image33, image34, image35, image36, image37, image38, image39, image40, image41, image42, image43, image44, image45, image46, image47, image48, image49, image50, image51, image52, image53, image54, image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68]
         .map((image, index) => (
-            <CustomImage src={image} alt={`image-${index}`} key={index} fill parallax parallaxScale={30} />
+            <CustomImage src={image} alt={`image-${index}`} key={index} width={1000} height={1000} parallax parallaxScale={30} />
         ))
 
     useEffect(() => {

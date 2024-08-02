@@ -35,7 +35,7 @@ const O_nas = () => {
                 <div className={styles.background}>
                     <div className={styles.colorOverlay}></div>
                     <video autoPlay muted loop playsInline>
-                        <source src={`${process.env.basePath || ""}/videos/o-nas-background.mp4`} type="video/mp4" />
+                        <source src={`${process.env.basePath || ""}/videos/o-nas-bg.mp4`} type="video/mp4" />
                     </video>
                 </div>
                 <div className={styles.overlay}>
@@ -104,7 +104,7 @@ const O_nas = () => {
                 <div className={styles.doswiadczenie}>
                     <div className={styles.doswiadczenieText}>
                         <h2>Nasze doświadczenie</h2>
-                        <p>W ciągu 25-letniej działalności na rynku pomogliśmy ponad 300 klientom na terenie całego kraju. Wypracowaliśmy sobie własne know-how, dzięki czemu możemy zaoferować unikatowe podejście do budowy hal stalowych.</p>
+                        <p>W ciągu 25-letniej działalności na rynku pomogliśmy ponad 300 klientom na terenie całego kraju. Wypracowaliśmy własne know-how, dzięki czemu możemy zaoferować unikatowe podejście do budowy hal stalowych.</p>
                         <p>Nasze doświadczenie oraz znajomość sprawdzonych partnerów pozwala nam zagwarantować klientom najbardziej efektywne rozwiązania dostępne na rynku.</p>
                     </div>
                     <Image

@@ -7,11 +7,13 @@
     height: 100%;
 }
 
-.image {
+.mainContainer img {
     transition: scale var(--transition);
     cursor: pointer;
     object-fit: cover;
     object-position: center;
+    width: 100%;
+    height: 100%;
 }
 
 .image[data-parallax="false"]:hover {

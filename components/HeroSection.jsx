@@ -3,7 +3,11 @@ import styles from "@/styles/hero.module.css";
 const HeroSection = () => {
     return (
         <section className={styles.section}>
-            <div className={styles.background} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/promag.jpg")` }}></div>
+            <div className={styles.background}>
+                <video autoPlay muted loop playsInline>
+                    <source src={`${process.env.basePath || ""}/videos/hero-bg.mp4`} type="video/mp4" />
+                </video>
+            </div>
             <div className={styles.overlay}>
                 <div className={styles.title}>
                     <h1>Hale </h1>

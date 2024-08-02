@@ -1,19 +1,20 @@
 import styles from "@/styles/section3.module.css";
-import hala1 from "@/public/images/hala-produkcyjna4.jpg";
-import hala2 from "@/public/images/dastrans.jpg";
-import hala3 from "@/public/images/IMG_20240704_153232572.jpg";
-import hala4 from "@/public/images/hala-rolnicza5.jpg";
-import hala5 from "@/public/images/IMG_20240704_133948230.jpg";
-import hala6 from "@/public/images/IMG_20240704_123859614.jpg";
-import hala7 from "@/public/images/IMG_20240704_121409000.jpg";
-import hala8 from "@/public/images/hala-magazynowa6.jpg";
-import hala9 from "@/public/images/IMG_20240704_112043445.jpg";
+import image1 from "@/public/images/DSC_0029.jpg";
+import image2 from "@/public/images/dastrans.jpg";
+import image3 from "@/public/images/IMG_20240704_153232572.jpg";
+import image4 from "@/public/images/hala-rolnicza5.jpg";
+import image5 from "@/public/images/Produkcja-i-montaz-konstrukcji-stalowych.JPG";
+import image6 from "@/public/images/IMG_20240704_123859614.jpg";
+import image7 from "@/public/images/IMG_20240704_121409000.jpg";
+import image8 from "@/public/images/hala-magazynowa6.jpg";
+import image9 from "@/public/images/IMG_20240704_112043445.jpg";
+import image10 from "@/public/images/DSC_0016.jpg";
 import { CustomButton, CustomImage } from ".";
 
 const Section3 = () => {
 
-    const images = [hala1, hala2, hala3, hala4, hala5, hala6, hala7, hala8, hala9].map((image, index) => (
-        <CustomImage src={image} alt={`image-${index}`} key={index} fill parallax parallaxScale={30} />
+    const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9].map((image, index) => (
+        <CustomImage src={image} alt={`image-${index}`} key={index} width={1000} height={1000} parallax parallaxScale={30} />
     ))
 
     return (
@@ -25,7 +26,7 @@ const Section3 = () => {
                         <div>
                             <CustomButton href={"/galeria"}><div className={styles.cta}><div><h4>Zobacz więcej</h4></div></div></CustomButton>
                         </div>
-                        <CustomImage src={hala3} alt="background" fill parallax parallaxScale={30} className={styles.image} />
+                        <CustomImage src={image10} alt="background" fill parallax parallaxScale={30} className={styles.image} />
                     </div>
                 </div>
             </section>

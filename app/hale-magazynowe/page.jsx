@@ -21,7 +21,11 @@ const HaleMagazynowe = () => {
     return (
         <main>
             <section className={styles.heroSection}>
-                <div className={styles.heroBackground} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/promag.jpg")` }}></div>
+                <div className={styles.heroBackground}>
+                    <video autoPlay muted loop playsInline>
+                        <source src={`${process.env.basePath || ""}/videos/hale-magazynowe-bg.mp4`} type="video/mp4" />
+                    </video>
+                </div>
                 <div className={styles.heroOverlay}>
                     <h1>Hale Magazynowe</h1>
                 </div>
