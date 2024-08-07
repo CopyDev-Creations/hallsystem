@@ -5,16 +5,15 @@ import { useEffect, useRef } from "react";
 import { GridHelper } from "three"
 import * as THREE from 'three';
 
-const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, onLoad }) => {
-    const cameraRef = useRef(null)
+const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, material }) => {
     const fixedWidth = Math.ceil((szerokosc || 1) / 6) * 6;
     const fixedLength = Math.ceil((dlugosc || 1) / 6) * 6;
     const fixedHeight = wysokosc;
     const objectSize = { width: fixedWidth, height: fixedHeight, depth: fixedLength };
     const wallSegmentHeight = (6 * Math.sin(Math.PI / 9)) / Math.sin(Math.PI / 180 * 70);
     const wallSegmentLength = (6 * Math.sin(Math.PI / 2)) / Math.sin(Math.PI / 180 * 70);
-    const wallSegmentFixedLength = fixedWidth / 6 / 2 * wallSegmentLength / 2 + 0.02;
-    const segmentY = fixedHeight / 2 + fixedWidth / 6 / 2 * wallSegmentHeight / 4;
+    const wallSegmentFixedLength = fixedWidth / 6 / 2 * wallSegmentLength / 2 + 0.04;
+    const segmentY = fixedHeight / 2 + fixedWidth / 6 / 2 * wallSegmentHeight / 4 - 0.03;
     const minCeiling = fixedHeight / 2;
     const maxCeiling = fixedHeight / 2 + fixedWidth / 6 / 2 * wallSegmentHeight / 2;
 
@@ -44,11 +43,11 @@ const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, onLoad }) 
     })();
     const addSegmentsPositions = (() => {
         let result = [];
-        const amount = Math.ceil((fixedLength - 6) / 6);
+        const amount = Math.ceil((fixedLength - 6) / 6) - 1;
 
         [fixedWidth / -8, fixedWidth / 8].forEach((posX) => {
             for (let i = 0; i <= amount; i++) {
-                result.push([posX, segmentY, fixedLength / 4 - i * 3])
+                result.push([posX, segmentY, fixedLength / 4 - i * 3 - (fixedLength / 2 / (amount + 2))])
             }
         });
         return result;
@@ -57,7 +56,7 @@ const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, onLoad }) 
         let result = [];
         for (let posX = fixedWidth / -4; posX <= fixedWidth / 4; posX += 1.5) {
             const percentage = 1 - Math.abs(posX) / (fixedWidth / 4);
-            result.push([posX, percentage * (maxCeiling - minCeiling) + minCeiling - 0.0175, 0]);
+            result.push([posX, percentage * (maxCeiling - minCeiling) + minCeiling - (percentage == 0 || percentage == 1 ? 0.025 : 0.045), 0]);
         }
         return result;
     })();
@@ -76,33 +75,29 @@ const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, onLoad }) 
 
     const ceilingOffset = { x: 0.02, y: 0, z: 0 };
 
-    const geometry = new THREE.BufferGeometry();
+    const floorGeometry = new THREE.BufferGeometry();
+    let wallsGeometry = new THREE.BufferGeometry();
+    const ceilingGeometry = new THREE.BufferGeometry();
 
-    const vertices = new Float32Array([
+    const floorVertices = new Float32Array([
+        // Floor
+        fixedWidth / 4, 0, fixedLength / 4,
+        fixedWidth / 4, 0, fixedLength / -4,
+        fixedWidth / -4, 0, fixedLength / -4,
+
+        fixedWidth / -4, 0, fixedLength / -4,
+        fixedWidth / -4, 0, fixedLength / 4,
+        fixedWidth / 4, 0, fixedLength / 4,
+    ]);
+    const wallsVertices = new Float32Array([
         // Ceiling
         fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / 4,
         0, maxCeiling, fixedLength / 4,
         fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / 4,
 
-        fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / 4,
-        fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / -4,
-        0, maxCeiling, fixedLength / 4,
-
-        0, maxCeiling, fixedLength / 4,
-        0, maxCeiling, fixedLength / -4,
-        fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / -4,
-
         fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / -4,
         0, maxCeiling, fixedLength / -4,
         fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / -4,
-
-        fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / -4,
-        fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / 4,
-        0, maxCeiling, fixedLength / -4,
-
-        0, maxCeiling, fixedLength / -4,
-        0, maxCeiling, fixedLength / 4,
-        fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / 4,
 
         // Walls
         fixedWidth / -4, 0, fixedLength / 4,
@@ -136,26 +131,98 @@ const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, onLoad }) 
         fixedWidth / -4, fixedHeight / 2, fixedLength / -4,
         fixedWidth / -4, fixedHeight / 2, fixedLength / 4,
         fixedWidth / -4, 0, fixedLength / 4,
+    ]);
+    const ceilingVertices = new Float32Array([
+        // Ceiling
+        fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / 4,
+        fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / -4,
+        0, maxCeiling, fixedLength / 4,
 
-        // Floor
-        fixedWidth / 4, 0, fixedLength / 4,
-        fixedWidth / 4, 0, fixedLength / -4,
-        fixedWidth / -4, 0, fixedLength / -4,
+        0, maxCeiling, fixedLength / 4,
+        0, maxCeiling, fixedLength / -4,
+        fixedWidth / 4 + ceilingOffset.x, minCeiling, fixedLength / -4,
 
-        fixedWidth / -4, 0, fixedLength / -4,
-        fixedWidth / -4, 0, fixedLength / 4,
-        fixedWidth / 4, 0, fixedLength / 4,
+        fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / -4,
+        fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / 4,
+        0, maxCeiling, fixedLength / -4,
+
+        0, maxCeiling, fixedLength / -4,
+        0, maxCeiling, fixedLength / 4,
+        fixedWidth / -4 - ceilingOffset.x, minCeiling, fixedLength / 4,
     ]);
 
-    // itemSize = 3 because there are 3 values (components) per vertex
-    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-    geometry.computeVertexNormals();
+    floorGeometry.setAttribute('position', new THREE.BufferAttribute(floorVertices, 3));
+    wallsGeometry.setAttribute('position', new THREE.BufferAttribute(wallsVertices, 3));
+    ceilingGeometry.setAttribute('position', new THREE.BufferAttribute(ceilingVertices, 3));
+    floorGeometry.computeVertexNormals();
+    wallsGeometry.computeVertexNormals();
+    ceilingGeometry.computeVertexNormals();
+
+    const texture = new THREE.TextureLoader().load(`${process.env.basePath || ""}/images/${material != "Płyta warstwowa" ? "blacha_texture.jpg" : "plyta_texture.jpg"}`);
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(1, 1);
+
     const meshMaterial = new THREE.MeshStandardMaterial({ color: 0x9e9e9e, side: THREE.DoubleSide });
-    const meshMaterial2 = new THREE.MeshStandardMaterial({ color: 0x6b6b6b });
+    const wallsMaterial = new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, map: texture });
+    const structureMaterial = new THREE.MeshStandardMaterial({ color: 0x6b6b6b });
+
+    //uv
+    const wallsUV = new Float32Array([
+        // ceiling front
+        0, 0,
+        fixedWidth / 12, (maxCeiling - minCeiling) / 3,
+        fixedWidth / 6, 0,
+
+        // ceiling back
+        0, 0,
+        fixedWidth / 12, (maxCeiling - minCeiling) / 3,
+        fixedWidth / 6, 0,
+
+        // front
+        0, 0,
+        fixedWidth / 6, 0,
+        0, fixedHeight / 6,
+
+        0, fixedHeight / 6,
+        fixedWidth / 6, fixedHeight / 6,
+        fixedWidth / 6, 0,
+
+        // right
+        0, 0,
+        fixedLength / 6, 0,
+        fixedLength / 6, fixedHeight / 6,
+
+        fixedLength / 6, fixedHeight / 6,
+        0, fixedHeight / 6,
+        0, 0,
+
+        // back
+        0, 0,
+        fixedWidth / 6, 0,
+        fixedWidth / 6, fixedHeight / 6,
+
+        fixedWidth / 6, fixedHeight / 6,
+        0, fixedHeight / 6,
+        0, 0,
+
+        // left
+        fixedLength / 6, 0,
+        0, 0,
+        0, fixedHeight / 6,
+
+        0, fixedHeight / 6,
+        fixedLength / 6, fixedHeight / 6,
+        fixedLength / 6, 0,
+
+    ]);
+    wallsGeometry = wallsGeometry.toNonIndexed();
+    wallsGeometry.setAttribute('uv', new THREE.BufferAttribute(wallsUV, 2));
+    wallsGeometry.attributes.uv.needsUpdate = true;
 
     return (
         <div>
-            <Canvas gl={{ antialias: true }} dpr={[1, 1.5]} onCreated={() => onLoad()}>
+            <Canvas gl={{ antialias: true }} dpr={[1, 1.5]}>
                 {/* <color attach="background" args={['#c1c1c1']} /> */}
                 <FitCameraToObject objectSize={objectSize} />
                 {/* <PerspectiveCamera makeDefault position={[10, 5, 10]} fov={35} ref={cameraRef} /> */}
@@ -170,66 +237,71 @@ const KonfiguratorCanvas = ({ szerokosc, dlugosc, wysokosc, poszycie, onLoad }) 
                     {/* <Center top> */}
                     {
                         mainPillarsPositions.map((position, index) => (
-                            <mesh castShadow receiveShadow material={meshMaterial2} position={position} key={index}>
-                                <boxGeometry args={[0.075, fixedHeight / 2, 0.075]} />
+                            <mesh castShadow receiveShadow material={structureMaterial} position={position} key={index}>
+                                <boxGeometry args={[0.15, fixedHeight / 2, 0.15]} />
                             </mesh>
                         ))
                     }
                     {
                         addPillarsPositions.map((position, index) => (
-                            <mesh castShadow receiveShadow material={meshMaterial2} position={position} key={index}>
-                                <boxGeometry args={[0.075, fixedHeight / 2, 0.05]} />
+                            <mesh castShadow receiveShadow material={structureMaterial} position={position} key={index}>
+                                <boxGeometry args={[0.15, fixedHeight / 2, 0.1]} />
                             </mesh>
                         ))
                     }
                     {
                         [fixedLength / 4, fixedLength / -4].map((posZ, index) => (
-                            <mesh castShadow receiveShadow material={meshMaterial2} position={[0, fixedHeight / 2 - 0.025, posZ]} key={index}>
-                                <boxGeometry args={[fixedWidth / 2, 0.025, 0.07]} />
+                            <mesh castShadow receiveShadow material={structureMaterial} position={[0, fixedHeight / 2 - 0.025, posZ]} key={index}>
+                                <boxGeometry args={[fixedWidth / 2, 0.05, 0.14]} />
                             </mesh>
                         ))
                     }
                     {
                         [fixedWidth / 8, fixedWidth / -8].map((posX, index) => (
                             [fixedLength / 4, fixedLength / -4].map((posZ, index) => (
-                                <mesh castShadow receiveShadow material={meshMaterial2} position={[posX, segmentY, posZ]} rotation={[0, 0, Math.PI / (posX < 0 ? 9 : -9)]} key={index}>
-                                    <boxGeometry args={[wallSegmentFixedLength, 0.05, 0.05]} />
+                                <mesh castShadow receiveShadow material={structureMaterial} position={[posX, segmentY, posZ]} rotation={[0, 0, Math.PI / (posX < 0 ? 9 : -9)]} key={index}>
+                                    <boxGeometry args={[wallSegmentFixedLength, 0.1, 0.1]} />
                                 </mesh>
                             ))
                         ))
                     }
                     {
                         addSegmentsPositions.map((position, index) => (
-                            <mesh castShadow receiveShadow material={meshMaterial2} position={position} rotation={[0, 0, Math.PI / (position[0] < 0 ? 9 : -9)]} key={index}>
-                                <boxGeometry args={[wallSegmentFixedLength, 0.05, 0.025]} />
+                            <mesh castShadow receiveShadow material={structureMaterial} position={position} rotation={[0, 0, Math.PI / (position[0] < 0 ? 9 : -9)]} key={index}>
+                                <boxGeometry args={[wallSegmentFixedLength, 0.1, 0.075]} />
                             </mesh>
                         ))
                     }
                     {
                         beamsPositions.map((position, index) => (
-                            <mesh castShadow receiveShadow material={meshMaterial2} position={position} key={index}>
-                                <boxGeometry args={[0.025, 0.025, fixedLength / 2]} />
+                            <mesh castShadow receiveShadow material={structureMaterial} position={position} key={index}>
+                                <boxGeometry args={[0.075, 0.05, fixedLength / 2]} />
                             </mesh>
                         ))
                     }
                     {
                         wallPillarsPositions.map((position, index) => (
-                            <mesh castShadow receiveShadow material={meshMaterial2} position={position} key={index}>
-                                <boxGeometry args={[0.075, ((1 - Math.abs(position[0]) / (fixedWidth / 4)) * (maxCeiling - minCeiling)), 0.05]} />
+                            <mesh castShadow receiveShadow material={structureMaterial} position={position} key={index}>
+                                <boxGeometry args={[0.15, ((1 - Math.abs(position[0]) / (fixedWidth / 4)) * (maxCeiling - minCeiling)) - 0.01, 0.1]} />
                             </mesh>
                         ))
                     }
                     {
                         fixedWidth % 2 == 0 && (
                             [fixedLength / 4, fixedLength / -4].map((posZ, index) => (
-                                <mesh castShadow receiveShadow material={meshMaterial2} position={[0, (maxCeiling + minCeiling) / 2, posZ]} key={index}>
-                                    <boxGeometry args={[0.075, maxCeiling - minCeiling + 0.025, 0.05]} />
+                                <mesh castShadow receiveShadow material={structureMaterial} position={[0, (maxCeiling + minCeiling) / 2 - 0.01, posZ]} key={index}>
+                                    <boxGeometry args={[0.15, maxCeiling - minCeiling - 0.01, 0.1]} />
                                 </mesh>
                             ))
                         )
                     }
                     {
-                        poszycie && <mesh geometry={geometry} material={meshMaterial} castShadow receiveShadow></mesh>
+                        poszycie &&
+                        <>
+                            <mesh geometry={floorGeometry} material={meshMaterial} castShadow receiveShadow></mesh>
+                            <mesh geometry={wallsGeometry} material={wallsMaterial} castShadow receiveShadow></mesh>
+                            <mesh geometry={ceilingGeometry} material={meshMaterial} castShadow receiveShadow></mesh>
+                        </>
                     }
                     {/* <ContactShadows opacity={1} scale={130} blur={1} far={10} resolution={256} color="#000000" /> */}
                     {/* <AccumulativeShadows temporal frames={100} color="#c1c1c1" colorBlend={2} toneMapped={true} alphaTest={0.75} opacity={2} scale={12}> */}

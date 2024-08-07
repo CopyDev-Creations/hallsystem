@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const isProduction = process.env.NODE_ENV == 'production'
-const basePath = isProduction ? "/hallsystem" : ""
+// const basePath = isProduction ? "/hallsystem" : ""
+const basePath = isProduction ? "" : ""
 
 const nextConfig = {
     basePath: basePath,
-    output: "export",
+    // output: "export",
     reactStrictMode: false,
-    images: { unoptimized: true },
+    // images: { unoptimized: true },
     env: {
         basePath: basePath,
     },

@@ -4,6 +4,10 @@ import { Dropdown, KonfiguratorCanvas, LoadingContext } from "@/components";
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import mapa from "@/public/images/mapa-stref.png"
+import blacha from "@/public/images/konfigurator_blacha.png"
+import konstrukcja from "@/public/images/konfigurator_konstrukcja.png"
+import plyta from "@/public/images/konfigurator_plyta.png"
+import axios from "axios";
 
 
 const StepLabel = ({ number, title }) => {
@@ -22,12 +26,13 @@ const Konfigurator = () => {
     const menuRef = useRef(null);
     const navRef = useRef(null);
     const viewRef = useRef(null);
+    const [supportsWebGL2, setSupportsWebGL2] = useState(false);
     const [formData, setFormData] = useState({
         rodzaj: "",
         szerokosc: 4,
         dlugosc: 6,
         wysokosc: 2.5,
-        material: "",
+        material: "Płyta warstwowa",
         drzwi: 0,
         bramy: 0,
         okna: 0,
@@ -38,7 +43,8 @@ const Konfigurator = () => {
         email: "",
         telefon: "",
         wojewodztwo: "",
-        miejscowosc: ""
+        miejscowosc: "",
+        komentarz: "",
     });
 
     const setSelectedID = (id) => {
@@ -55,12 +61,29 @@ const Konfigurator = () => {
         navChildren[id - 1].classList.toggle("active");
     }
 
-    const handleSubmit = () => {
-        console.log(formData);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        document.querySelector("#submit").innerHTML = "Wysłano!";
+        axios.post('/api/send-email', { formData: formData })
+            .then(() => {
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 1000);
+            })
+            .catch(() => document.querySelector("#submit").innerHTML = "Wystąpił błąd");
     }
 
     useEffect(() => {
+        const gl = document.createElement('canvas').getContext('webgl2');
+        if (!gl) {
+            setSupportsWebGL2(false);
+        } else {
+            setSupportsWebGL2(true);
+        }
+
+        stopLoading();
     }, [])
+
 
     return (
         <main>
@@ -92,7 +115,7 @@ const Konfigurator = () => {
                             <StepLabel number={2} title={"Wykończenie"} />
                             <div>
                                 <p>Materiał ścian:</p>
-                                <Dropdown list={["Blacha", "Płyta warstwowa"]} onChoice={(choice) => setFormData({ ...formData, material: choice })} placeholder={"Wybierz"} />
+                                <Dropdown list={["Blacha", "Płyta warstwowa"]} preselect={"Płyta warstwowa"} onChoice={(choice) => setFormData({ ...formData, material: choice })} placeholder={"Wybierz"} />
                             </div>
                             <div>
                                 <p>Liczba drzwi:</p>
@@ -150,7 +173,7 @@ const Konfigurator = () => {
                         </div>
                         <div>
                             <StepLabel number={formData.rodzaj == "Konstrukcja stalowa" ? 3 : 5} title={"Kontakt"} />
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div>
                                     <p>Adres e-mail:</p>
                                     <input type="email" name="email" id="email" placeholder="E-mail" required onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
@@ -161,17 +184,17 @@ const Konfigurator = () => {
                                 </div>
                                 <div>
                                     <p>Województwo:</p>
-                                    <input type="text" name="wojewodztwo" id="wojewodztwo" placeholder="Nazwa województwa" onChange={(e) => setFormData({ ...formData, wojewodztwo: e.target.value })} />
+                                    <input type="text" name="wojewodztwo" id="wojewodztwo" placeholder="Województwo" onChange={(e) => setFormData({ ...formData, wojewodztwo: e.target.value })} />
                                 </div>
                                 <div>
                                     <p>Miejscowość:</p>
-                                    <input type="text" name="miejscowosc" id="miejscowosc" placeholder="Nazwa miejscowości" onChange={(e) => setFormData({ ...formData, miejscowosc: e.target.value })} />
+                                    <input type="text" name="miejscowosc" id="miejscowosc" placeholder="Miejscowość" onChange={(e) => setFormData({ ...formData, miejscowosc: e.target.value })} />
                                 </div>
                                 <div>
                                     <p>Komentarz:</p>
                                     <textarea name="komentarz" id="komentarz" placeholder="Dodatkowe uwagi . . ." data-lenis-prevent onChange={(e) => setFormData({ ...formData, komentarz: e.target.value })} />
                                 </div>
-                                <button type="submit" onClick={handleSubmit}>Wyślij</button>
+                                <button type="submit" id="submit">Wyślij</button>
                             </form>
                         </div>
                     </div>
@@ -182,9 +205,28 @@ const Konfigurator = () => {
                         <button className={styles.stepBtn} style={{ display: formData.rodzaj == "Konstrukcja stalowa" ? "none" : "" }} onClick={() => { setSelectedID(4) }}>4</button>
                         <button className={styles.stepBtn} onClick={() => { setSelectedID(5) }}>{formData.rodzaj == "Konstrukcja stalowa" ? 3 : 5}</button>
                     </div>
-                    <div className={`${styles.viewport} prevent-select`} data-lenis-prevent ref={viewRef}>
-                        <KonfiguratorCanvas szerokosc={formData.szerokosc} dlugosc={formData.dlugosc} wysokosc={formData.wysokosc} poszycie={formData.rodzaj != "Konstrukcja stalowa"} onLoad={() => stopLoading()} />
-                    </div>
+                    {supportsWebGL2 ?
+                        <div className={`${styles.viewport} prevent-select`} data-lenis-prevent ref={viewRef}>
+                            <KonfiguratorCanvas szerokosc={formData.szerokosc} dlugosc={formData.dlugosc} wysokosc={formData.wysokosc} poszycie={formData.rodzaj != "Konstrukcja stalowa"} material={formData.material} />
+                        </div>
+                        :
+                        <div className={`${styles.viewport} prevent-select`} ref={viewRef}>
+                            {
+                                formData.rodzaj != "Konstrukcja stalowa"
+                                    ?
+                                    (
+                                        formData.material == "Płyta warstwowa"
+                                            ?
+                                            <Image src={plyta} alt="wizualizacja" fill />
+                                            :
+                                            <Image src={blacha} alt="wizualizacja" fill />
+                                    )
+                                    :
+                                    <Image src={konstrukcja} alt="wizualizacja" fill />
+
+                            }
+                        </div>
+                    }
                 </div>
             </section>
         </main>

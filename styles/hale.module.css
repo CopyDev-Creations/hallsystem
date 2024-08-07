@@ -8,9 +8,9 @@
 
     /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 33% calc(100% - 120px), 0% calc(100% - 60px)); */
     & h1 {
-        font: 600 8vw / 15lvh var(--ff);
+        font: 600 8vw / 15lvh "Varela";
         height: calc(8vw + 40px);
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
         color: var(--secondary-color);
         filter: drop-shadow(0px 0px 10px var(--primary-color));
     }
@@ -62,7 +62,7 @@
         /* letter-spacing: 0.1em; */
         font-size: min(8vw, max(54px, 4vw));
         line-height: min(8vw, max(64px, 5vw));
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
     }
 
     &>p {

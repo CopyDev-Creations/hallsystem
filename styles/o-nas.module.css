@@ -58,9 +58,9 @@
     gap: 0.5em;
     text-wrap: nowrap;
     width: 100%;
-    font: 700 8vw / 15lvh var(--ff);
+    font: 700 8vw / 15lvh "Varela";
     height: calc(8vw + 40px);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     filter: drop-shadow(0px 0px 10px var(--primary-color));
     color: var(--secondary-color);
 }

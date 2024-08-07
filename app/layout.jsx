@@ -14,6 +14,8 @@ export default function RootLayout({ children }) {
     <html lang="pl">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet"></link>
       </head>
       <body className={inter.className} style={{ backgroundImage: `url("${process.env.basePath || ""}/images/background.jpg")` }}>
         <SmoothScrolling>

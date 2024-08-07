@@ -12,7 +12,7 @@
         color: var(--primary-color);
         font-size: min(8vw, max(54px, 4vw));
         line-height: min(8vw, max(64px, 5vw));
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
         z-index: 1;
     }
 }

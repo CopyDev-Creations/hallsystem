@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
+/* @font-face {
+    font-family: 'UTM-Nokia';
+    src: url('../fonts/UTM-Nokia.ttf');
+    font-weight: normal;
+    font-style: normal;
+} */
+
 :root {
     --primary-color: #212021;
     /* --secondary-color: #302a27; */
@@ -10,7 +17,7 @@
     --accent-color3: #ff724b;
     --ff: "Work Sans";
     /* --h1: 900 54px/64px var(--ff); */
-    --h1: 600 max(54px, 4vw) / max(64px, 5vw) var(--ff);
+    --h1: 600 max(54px, 4vw) / max(64px, 5vw) "Varela";
     /* --h2: 800 36px/36px var(--ff); */
     --h2: 600 max(36px, 3vw) / max(36px, 4vw) var(--ff);
     /* --h3: 700 24px/30px var(--ff); */
@@ -82,8 +89,14 @@ input[type=range]::-webkit-slider-runnable-track {
     border: 1px solid var(--primary-color);
 }
 
-/* input[type=range]::-moz-range-track {
-} */
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: var(--accent-color2);
+    border-radius: 3px;
+    border: 1px solid var(--primary-color);
+}
 
 input[type=range]::-webkit-slider-thumb {
     appearance: none;
@@ -97,8 +110,17 @@ input[type=range]::-webkit-slider-thumb {
     margin-top: -14px;
 }
 
-/* input[type=range]::-moz-range-thumb {
-} */
+input[type=range]::-moz-range-thumb {
+    appearance: none;
+    border: 1px solid var(--primary-color);
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+}
 
 /* //////// */
 
@@ -115,8 +137,6 @@ html {
 body {
     font-family: var(--ff);
     background-color: var(--secondary-color);
-    /* background-image: url("/icons/grid.svg"); */
-    /* background-size: 32px; */
     background-repeat: repeat;
     background-position: 52% 7%;
     background-blend-mode: multiply;
